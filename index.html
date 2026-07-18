@@ -2632,5 +2632,24 @@ body.intro-active {
 
     </script>
 
+    <script>
+  window.addEventListener("load", function () {
+    const introLoader = document.getElementById("introLoader");
+
+    if (!introLoader) return;
+
+    setTimeout(function () {
+      introLoader.style.opacity = "0";
+      introLoader.style.visibility = "hidden";
+      introLoader.style.pointerEvents = "none";
+      document.body.style.overflow = "";
+    }, 4200);
+
+    setTimeout(function () {
+      introLoader.remove();
+    }, 5200);
+  });
+</script>
+
 </body>
 </html>
