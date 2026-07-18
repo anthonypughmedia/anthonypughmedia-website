@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Contact Anthony Pugh Media about website design, video editing or digital business services."
+  >
+
+  <title>Contact | Anthony Pugh Media</title>
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --light-gold: #f6d978;
+      --dark-gold: #8a6b18;
+      --black: #050505;
+      --card: #111111;
+      --white: #ffffff;
+      --grey: #b8b8b8;
+      --border: rgba(212, 175, 55, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(212, 175, 55, 0.14),
+          transparent 35%
+        ),
+        var(--black);
+
+      color: var(--white);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1080px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(5, 5, 5, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(15px);
+    }
+
+    .navbar {
+      min-height: 78px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+
+      display: grid;
+      place-items: center;
+
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+
+      background: #090909;
+
+      color: var(--gold);
+      font-size: 20px;
+      font-weight: 900;
+
+      box-shadow:
+        0 0 18px rgba(212, 175, 55, 0.25);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    .brand-text span {
+      display: block;
+
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .home-button {
+      padding: 11px 18px;
+
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 14px;
+
+      transition: 0.25s;
+    }
+
+    .home-button:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    main {
+      padding: 85px 0;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .label {
+      display: inline-block;
+
+      padding: 8px 15px;
+      margin-bottom: 20px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      background: rgba(212, 175, 55, 0.08);
+      color: var(--light-gold);
+
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      display: block;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--dark-gold),
+          var(--light-gold),
+          var(--gold)
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .intro p {
+      max-width: 680px;
+      margin: 22px auto 0;
+
+      color: var(--grey);
+      font-size: 17px;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .contact-info,
+    .contact-form {
+      padding: 32px;
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.02)
+        );
+
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    .contact-info h2,
+    .contact-form h2 {
+      margin-bottom: 12px;
+      font-size: 29px;
+    }
+
+    .contact-info > p,
+    .contact-form > p {
+      margin-bottom: 24px;
+      color: var(--grey);
+    }
+
+    .response-box {
+      margin-bottom: 22px;
+      padding: 18px;
+
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 12px;
+
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    .response-box strong {
+      display: block;
+      margin-bottom: 5px;
+
+      color: var(--gold);
+      font-size: 16px;
+    }
+
+    .response-box p {
+      color: #dddddd;
+      font-size: 14px;
+    }
+
+    .contact-option {
+      display: block;
+
+      margin-top: 13px;
+      padding: 16px;
+
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 10px;
+
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .contact-option strong {
+      display: block;
+
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contact-option span {
+      display: block;
+      margin-top: 4px;
+
+      color: #eeeeee;
+      overflow-wrap: anywhere;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: #eeeeee;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 15px;
+
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      outline: none;
+
+      background: #090909;
+      color: var(--white);
+
+      font: inherit;
+
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+
+      box-shadow:
+        0 0 0 3px rgba(212, 175, 55, 0.09);
+    }
+
+    textarea {
+      min-height: 155px;
+      resize: vertical;
+    }
+
+    option {
+      background: #090909;
+      color: var(--white);
+    }
+
+    .submit-button {
+      width: 100%;
+      min-height: 55px;
+      margin-top: 22px;
+
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      cursor: pointer;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--dark-gold),
+          var(--light-gold)
+        );
+
+      color: #050505;
+      font-size: 15px;
+      font-weight: 900;
+
+      transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 15px 40px rgba(212, 175, 55, 0.3);
+    }
+
+    .privacy {
+      margin-top: 13px;
+
+      color: #8d8d8d;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    footer {
+      padding: 35px 0;
+
+      border-top: 1px solid var(--border);
+      background: #030303;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-content p {
+      color: #8f8f8f;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+    }
+
+    .footer-links a {
+      color: #bdbdbd;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    @media (max-width: 800px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        min-height: 70px;
+      }
+
+      .logo {
+        width: 44px;
+        height: 44px;
+        font-size: 17px;
+      }
+
+      .brand-text strong {
+        font-size: 15px;
+      }
+
+      .brand-text span {
+        font-size: 9px;
+      }
+
+      .home-button {
+        padding: 9px 13px;
+        font-size: 12px;
+      }
+
+      main {
+        padding: 60px 0;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .contact-info,
+      .contact-form {
+        padding: 23px 18px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+
+      <a class="brand" href="index.html">
+
+        <div class="logo">AP</div>
+
+        <div class="brand-text">
+          <strong>Anthony Pugh Media</strong>
+          <span>Digital Business Solutions</span>
+        </div>
+
+      </a>
+
+      <a href="index.html" class="home-button">
+        Back to Home
+      </a>
+
+    </div>
+  </header>
+
+
+  <main>
+    <div class="container">
+
+      <section class="intro">
+
+        <span class="label">
+          Contact Anthony Pugh Media
+        </span>
+
+        <h1>
+          Let’s Talk About
+          <span>Your Business.</span>
+        </h1>
+
+        <p>
+          Complete the simple form below and tell me what you need.
+          Your message will come directly to my inbox and I will
+          personally get back in touch.
+        </p>
+
+      </section>
+
+
+      <section class="contact-layout">
+
+        <aside class="contact-info">
+
+          <h2>Quick Personal Response</h2>
+
+          <p>
+            You will deal directly with me throughout the process,
+            from your first message to the finished work.
+          </p>
+
+          <div class="response-box">
+
+            <strong>Automatic confirmation straight away</strong>
+
+            <p>
+              Personal replies are available between 6:00am and
+              10:00pm. Messages received after 10:00pm will receive
+              a personal reply from 6:00am the following morning.
+            </p>
+
+          </div>
+
+          <a
+            class="contact-option"
+            href="mailto:antantant2891@outlook.com"
+          >
+            <strong>Email</strong>
+            <span>antantant2891@outlook.com</span>
+          </a>
+
+          <a
+            class="contact-option"
+            href="https://wa.me/447386739451?text=Hello%20Anthony%2C%20I%20would%20like%20to%20talk%20about%20your%20services."
+            target="_blank"
+            rel="noopener"
+          >
+            <strong>WhatsApp</strong>
+            <span>Send a direct message</span>
+          </a>
+
+        </aside>
+
+
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/antantant2891@outlook.com"
+          method="POST"
+        >
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="New General Website Enquiry"
+          >
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          >
+
+          <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+          >
+
+          <input
+            type="text"
+            name="_honey"
+            style="display:none"
+          >
+
+          <h2>Ask Me to Get in Touch</h2>
+
+          <p>
+            Fill in your details and briefly explain what you would
+            like help with.
+          </p>
+
+          <div class="form-grid">
+
+            <div class="form-group">
+
+              <label for="name">
+                Your Name *
+              </label>
+
+              <input
+                id="name"
+                name="Name"
+                type="text"
+                placeholder="Your full name"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="business">
+                Business Name
+              </label>
+
+              <input
+                id="business"
+                name="Business Name"
+                type="text"
+                placeholder="Your business name"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="email">
+                Email Address *
+              </label>
+
+              <input
+                id="email"
+                name="Email Address"
+                type="email"
+                placeholder="Your email address"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="phone">
+                Phone Number *
+              </label>
+
+              <input
+                id="phone"
+                name="Phone Number"
+                type="tel"
+                placeholder="Your contact number"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="service">
+                What Are You Interested In?
+              </label>
+
+              <select
+                id="service"
+                name="Service Required"
+              >
+
+                <option value="Not sure yet">
+                  I am not sure yet
+                </option>
+
+                <option value="£99 Website">
+                  £99 Basic Website
+                </option>
+
+                <option value="£298 Website">
+                  £298 Business Website
+                </option>
+
+                <option value="Ready-to-Earn Website">
+                  Ready-to-Earn Website
+                </option>
+
+                <option value="Video Editing">
+                  Video Editing
+                </option>
+
+                <option value="Free Sample Edit">
+                  Free Sample Edit
+                </option>
+
+                <option value="Creator Academy">
+                  Creator Academy
+                </option>
+
+                <option value="Other">
+                  Something else
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="contact-method">
+                Preferred Contact Method
+              </label>
+
+              <select
+                id="contact-method"
+                name="Preferred Contact Method"
+              >
+
+                <option value="Phone">
+                  Phone call
+                </option>
+
+                <option value="WhatsApp">
+                  WhatsApp
+                </option>
+
+                <option value="Email">
+                  Email
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group full">
+
+              <label for="contact-time">
+                Best Time to Contact You
+              </label>
+
+              <input
+                id="contact-time"
+                name="Best Contact Time"
+                type="text"
+                placeholder="For example, today after 5pm"
+              >
+
+            </div>
+
+
+            <div class="form-group full">
+
+              <label for="message">
+                How Can I Help? *
+              </label>
+
+              <textarea
+                id="message"
+                name="Message"
+                placeholder="Briefly explain what you need help with"
+                required
+              ></textarea>
+
+            </div>
+
+          </div>
+
+          <button
+            type="submit"
+            class="submit-button"
+          >
+            Ask Anthony to Contact Me
+          </button>
+
+          <p class="privacy">
+            Your details will only be used to respond to your enquiry.
+          </p>
+
+        </form>
+
+      </section>
+
+    </div>
+  </main>
+
+
+  <footer>
+    <div class="container footer-content">
+
+      <div>
+
+        <strong>Anthony Pugh Media</strong>
+
+        <p>
+          Website design, video editing and digital business
+          solutions.
+        </p>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="basic-website.html">
+          £99 Website
+        </a>
+
+        <a href="business-website.html">
+          £298 Website
+        </a>
+
+        <a href="mailto:antantant2891@outlook.com">
+          Email
+        </a>
+
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
