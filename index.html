@@ -1224,10 +1224,297 @@
                 height: 440px;
             }
         }
+        /* FULL SCREEN INTRO ANIMATION */
+
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(212, 175, 55, 0.16),
+      transparent 38%
+    ),
+    #030303;
+
+  overflow: hidden;
+
+  transition:
+    opacity 0.9s ease,
+    visibility 0.9s ease;
+}
+
+.intro-loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-loader::before {
+  content: "";
+
+  position: absolute;
+  inset: -50%;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(212, 175, 55, 0.08),
+      transparent 28%
+    );
+
+  animation: introRotate 6s linear infinite;
+}
+
+.intro-loader::after {
+  content: "";
+
+  position: absolute;
+  width: 150%;
+  height: 2px;
+  left: -150%;
+  top: 50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #f6d978,
+      transparent
+    );
+
+  box-shadow:
+    0 0 15px rgba(246, 217, 120, 0.85),
+    0 0 35px rgba(212, 175, 55, 0.45);
+
+  animation: introSweep 2.4s ease-in-out 0.4s forwards;
+}
+
+.intro-loader-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 900px;
+  text-align: center;
+}
+
+.intro-loader-logo {
+  width: 96px;
+  height: 96px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 26px;
+
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151515,
+      #000000
+    );
+
+  color: #d4af37;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -2px;
+
+  box-shadow:
+    0 0 30px rgba(212, 175, 55, 0.34),
+    inset 0 0 20px rgba(212, 175, 55, 0.08);
+
+  opacity: 0;
+  transform: scale(0.7);
+
+  animation: introLogo 1s ease 0.2s forwards;
+}
+
+.intro-loader h2 {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: clamp(34px, 6vw, 74px);
+  line-height: 1;
+  letter-spacing: -2px;
+
+  opacity: 0;
+  transform: translateY(28px);
+
+  animation: introText 0.9s ease 0.7s forwards;
+}
+
+.intro-loader h2 span {
+  display: block;
+  margin-top: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8a6b18,
+      #f6d978,
+      #d4af37
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.intro-loader p {
+  max-width: 700px;
+  margin: 25px auto 0;
+
+  color: #c8c8c8;
+  font-size: clamp(16px, 2.4vw, 21px);
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  animation: introText 0.9s ease 1.15s forwards;
+}
+
+.intro-loader-bar {
+  width: min(420px, 80%);
+  height: 3px;
+
+  margin: 34px auto 0;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  animation: introBarFade 0.5s ease 1.5s forwards;
+}
+
+.intro-loader-bar span {
+  display: block;
+  width: 0;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8a6b18,
+      #f6d978
+    );
+
+  box-shadow:
+    0 0 18px rgba(212, 175, 55, 0.65);
+
+  animation: introProgress 2.1s ease 1.5s forwards;
+}
+
+body.intro-active {
+  overflow: hidden;
+}
+
+@keyframes introLogo {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes introText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introProgress {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes introBarFade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes introSweep {
+  0% {
+    left: -150%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes introRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-loader-logo {
+    width: 78px;
+    height: 78px;
+    font-size: 28px;
+  }
+
+  .intro-loader h2 {
+    letter-spacing: -1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-loader,
+  .intro-loader *,
+  .intro-loader::before,
+  .intro-loader::after {
+    animation: none !important;
+  }
+}
     </style>
 </head>
 
 <body>
+    <div class="intro-loader" id="introLoader">
+
+  <div class="intro-loader-content">
+
+    <div class="intro-loader-logo">
+      AP
+    </div>
+
+    <h2>
+      Your Business Deserves
+      <span>More Than Just a Website.</span>
+    </h2>
+
+    <p>
+      Anthony Pugh Media creates professional websites,
+      powerful video content and digital solutions designed
+      to help your business grow.
+    </p>
+
+    <div class="intro-loader-bar">
+      <span></span>
+    </div>
+
+  </div>
+
+</div>
 
     <!-- ==========================
          HEADER
