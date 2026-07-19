@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Get your business online with Anthony Pugh Media. Professional website, social media setup, secure hosting and ongoing support from £2.49 per week.">
+
+    <title>Get Your Business Online Today | Anthony Pugh Media</title>
+
+    <style>
+        :root {
+            --black: #030303;
+            --dark: #090909;
+            --panel: #111111;
+            --panel-light: #181818;
+            --gold: #d4a62a;
+            --gold-light: #ffe590;
+            --gold-dark: #8c650c;
+            --green: #43b717;
+            --green-light: #8be15f;
+            --blue: #1265f1;
+            --white: #ffffff;
+            --grey: #c4c4c4;
+            --border: rgba(212, 166, 42, 0.35);
+            --shadow: 0 0 38px rgba(212, 166, 42, 0.18);
+            --radius: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--white);
+            line-height: 1.5;
+            overflow-x: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 80% 10%,
+                    rgba(67, 183, 23, 0.11),
+                    transparent 26%
+                ),
+                radial-gradient(
+                    circle at 12% 34%,
+                    rgba(18, 101, 241, 0.10),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 70% 70%,
+                    rgba(212, 166, 42, 0.10),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #020202 0%,
+                    #090909 55%,
+                    #020202 100%
+                );
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 44px 44px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+        }
+
+        .gold-text {
+            background:
+                linear-gradient(
+                    110deg,
+                    #a87410,
+                    #ffe79c 48%,
+                    #bc8213
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .green-text {
+            color: var(--green-light);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 18px;
+            padding: 8px 13px;
+
+            border-radius: 999px;
+            border: 1px solid rgba(67, 183, 23, 0.42);
+
+            color: var(--green-light);
+            background: rgba(67, 183, 23, 0.08);
+
+            font-size: 0.76rem;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            min-height: 54px;
+            padding: 15px 23px;
+
+            border-radius: 13px;
+            border: 1px solid var(--border);
+
+            font-weight: 900;
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .button-gold {
+            color: #080808;
+            border: 0;
+
+            background:
+                linear-gradient(
+                    115deg,
+                    #9c6c0c,
+                    #ffe798 48%,
+                    #b77d0f
+                );
+        }
+
+        .button-green {
+            color: #ffffff;
+            border: 0;
+
+            background:
+                linear-gradient(
+                    115deg,
+                    #267d0d,
+                    #4ccb1e 52%,
+                    #2a8e0e
+                );
+
+            box-shadow:
+                0 0 30px rgba(67, 183, 23, 0.28);
+        }
+
+        .button-dark {
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .button-full {
+            width: 100%;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            border-bottom: 1px solid var(--border);
+            background: rgba(2, 2, 2, 0.88);
+            backdrop-filter: blur(18px);
+        }
+
+        .navigation {
+            min-height: 88px;
+
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .logo img {
+            width: 170px;
+            height: 72px;
+            object-fit: contain;
+        }
+
+        .back-link {
+            justify-self: center;
+            color: #dddddd;
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+
+        .back-link:hover {
+            color: var(--gold-light);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-actions .button {
+            min-height: 44px;
+            padding: 11px 16px;
+            border-radius: 999px;
+            font-size: 0.84rem;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 760px;
+            display: grid;
+            grid-template-columns: 1.12fr 0.88fr;
+            align-items: center;
+            gap: 48px;
+            padding: 76px 0 64px;
+        }
+
+        .hero h1 {
+            max-width: 760px;
+
+            font-size: clamp(3.5rem, 7vw, 7.2rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            display: block;
+        }
+
+        .hero-description {
+            max-width: 690px;
+            margin: 27px 0 28px;
+
+            color: #d3d3d3;
+            font-size: 1.12rem;
+            line-height: 1.75;
+        }
+
+        .hero-price-line {
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 11px;
+
+            margin: 12px 0 28px;
+        }
+
+        .hero-price {
+            color: var(--green-light);
+            font-size: clamp(3.8rem, 7vw, 7rem);
+            font-weight: 950;
+            line-height: 0.9;
+            letter-spacing: -0.055em;
+        }
+
+        .hero-price-note {
+            padding-bottom: 8px;
+            color: #d9d9d9;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .hero-small-print {
+            margin-top: 19px;
+            color: #9f9f9f;
+            font-size: 0.82rem;
+        }
+
+        .offer-card {
+            position: relative;
+            overflow: hidden;
+
+            padding: 34px;
+
+            border: 1px solid rgba(255, 229, 144, 0.55);
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(212, 166, 42, 0.11),
+                    transparent 42%
+                ),
+                rgba(10, 10, 10, 0.95);
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.5),
+                var(--shadow);
+        }
+
+        .offer-card::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            right: -80px;
+            top: -90px;
+            border-radius: 50%;
+            background: rgba(67, 183, 23, 0.13);
+            filter: blur(35px);
+        }
+
+        .turnaround {
+            position: relative;
+
+            display: grid;
+            place-items: center;
+
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+            border: 6px solid #f2f2f2;
+
+            text-align: center;
+
+            box-shadow:
+                0 0 0 8px rgba(67, 183, 23, 0.15),
+                0 0 45px rgba(67, 183, 23, 0.18);
+        }
+
+        .turnaround::after {
+            content: "";
+            position: absolute;
+            top: -23px;
+            width: 34px;
+            height: 24px;
+            border-radius: 7px 7px 2px 2px;
+            background: #f2f2f2;
+        }
+
+        .turnaround span {
+            display: block;
+            color: var(--grey);
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .turnaround strong {
+            display: block;
+            color: var(--green-light);
+            font-size: 2.7rem;
+            line-height: 0.9;
+        }
+
+        .offer-card h2 {
+            margin-bottom: 16px;
+            color: var(--gold-light);
+            font-size: 1.85rem;
+        }
+
+        .tick-list {
+            list-style: none;
+            display: grid;
+            gap: 13px;
+        }
+
+        .tick-list li {
+            position: relative;
+            padding-left: 30px;
+            color: #dddddd;
+            font-weight: 750;
+        }
+
+        .tick-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: -1px;
+
+            width: 21px;
+            height: 21px;
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+            color: #ffffff;
+            background: var(--green);
+
+            font-size: 0.75rem;
+            font-weight: 950;
+        }
+
+        /* TRUST STRIP */
+
+        .trust-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            margin-bottom: 35px;
+
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            background: rgba(10, 10, 10, 0.92);
+            box-shadow: var(--shadow);
+        }
+
+        .trust-item {
+            padding: 23px 18px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .trust-item:last-child {
+            border-right: 0;
+        }
+
+        .trust-item strong {
+            display: block;
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .trust-item span {
+            color: #a9a9a9;
+            font-size: 0.82rem;
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 88px 0;
+        }
+
+        .section-heading {
+            max-width: 790px;
+            margin-bottom: 37px;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 16px;
+            font-size: clamp(2.4rem, 4.5vw, 4.7rem);
+            line-height: 0.98;
+            letter-spacing: -0.035em;
+        }
+
+        .section-heading p {
+            color: var(--grey);
+            font-size: 1.05rem;
+            line-height: 1.72;
+        }
+
+        /* INCLUDED */
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .included-card {
+            min-height: 235px;
+            padding: 27px;
+
+            border: 1px solid var(--border);
+            border-radius: 21px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 101, 241, 0.08),
+                    transparent 45%
+                ),
+                var(--panel);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .included-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+        }
+
+        .included-icon {
+            width: 58px;
+            height: 58px;
+
+            display: grid;
+            place-items: center;
+
+            margin-bottom: 20px;
+
+            border-radius: 17px;
+            border: 1px solid rgba(18, 101, 241, 0.45);
+
+            color: #70a1ff;
+            font-size: 1.7rem;
+        }
+
+        .included-card h3 {
+            margin-bottom: 9px;
+            font-size: 1.25rem;
+        }
+
+        .included-card p {
+            color: var(--grey);
+            line-height: 1.65;
+            font-size: 0.93rem;
+        }
+
+        /* SUPPORT */
+
+        .support-panel {
+            display: grid;
+            grid-template-columns: 0.75fr 1.25fr;
+            gap: 38px;
+            align-items: center;
+
+            padding: 48px;
+
+            border: 1px solid rgba(67, 183, 23, 0.45);
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle at 14% 50%,
+                    rgba(67, 183, 23, 0.16),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    130deg,
+                    #0b0b0b,
+                    #111308
+                );
+
+            box-shadow:
+                0 0 45px rgba(67, 183, 23, 0.12);
+        }
+
+        .support-badge {
+            width: 210px;
+            height: 210px;
+            margin: 0 auto;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+            border: 2px solid rgba(67, 183, 23, 0.5);
+
+            font-size: 5rem;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(67, 183, 23, 0.20),
+                    transparent 65%
+                );
+
+            box-shadow:
+                0 0 50px rgba(67, 183, 23, 0.18);
+        }
+
+        .support-content h2 {
+            margin-bottom: 16px;
+            font-size: clamp(2.3rem, 4vw, 4.3rem);
+            line-height: 1;
+        }
+
+        .support-content p {
+            color: #d0d0d0;
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .signature {
+            color: var(--green-light);
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 800;
+        }
+
+        /* WHY CHOOSE */
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+        }
+
+        .benefit {
+            min-height: 190px;
+            padding: 23px 18px;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            background: rgba(13, 13, 13, 0.88);
+        }
+
+        .benefit strong {
+            display: block;
+            color: var(--gold-light);
+            margin-bottom: 9px;
+            font-size: 1.02rem;
+        }
+
+        .benefit p {
+            color: var(--grey);
+            font-size: 0.86rem;
+            line-height: 1.58;
+        }
+
+        /* WELCOME PACK */
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.82fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .welcome-card,
+        .academy-card {
+            padding: 36px;
+
+            border-radius: 26px;
+            border: 1px solid var(--border);
+
+            background: var(--panel);
+        }
+
+        .welcome-card h2,
+        .academy-card h2 {
+            margin-bottom: 17px;
+            font-size: 2rem;
+        }
+
+        .welcome-card .tick-list {
+            margin-top: 22px;
+        }
+
+        .academy-card {
+            border-color: rgba(18, 101, 241, 0.55);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 101, 241, 0.22),
+                    rgba(18, 101, 241, 0.04)
+                ),
+                #07122f;
+        }
+
+        .academy-card strong {
+            display: block;
+            margin: 18px 0 8px;
+
+            color: #b9d0ff;
+            font-size: 1.25rem;
+        }
+
+        .academy-card .discount {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 14px;
+
+            border-radius: 10px;
+            color: #08122d;
+            background: #b8dc39;
+
+            font-weight: 950;
+        }
+
+        /* CONTACT */
+
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .contact-details,
+        .contact-form {
+            padding: 36px;
+
+            border: 1px solid var(--border);
+            border-radius: 26px;
+
+            background: var(--panel);
+        }
+
+        .contact-details h2,
+        .contact-form h2 {
+            margin-bottom: 14px;
+            font-size: 2rem;
+        }
+
+        .contact-details p,
+        .contact-form > p {
+            color: var(--grey);
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .contact-option {
+            display: block;
+            margin-top: 13px;
+            padding: 18px;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .contact-option strong {
+            display: block;
+            color: var(--gold-light);
+            margin-bottom: 4px;
+        }
+
+        .contact-option span {
+            color: #d3d3d3;
+            font-size: 0.93rem;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        label {
+            display: grid;
+            gap: 7px;
+
+            color: #e7e7e7;
+            font-size: 0.88rem;
+            font-weight: 800;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 12px;
+            outline: none;
+
+            color: var(--white);
+            background: #090909;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 166, 42, 0.08);
+        }
+
+        textarea {
+            min-height: 125px;
+            resize: vertical;
+        }
+
+        .form-note {
+            color: #8f8f8f;
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        /* FAQ */
+
+        .faq-grid {
+            display: grid;
+            gap: 13px;
+        }
+
+        details {
+            padding: 20px 22px;
+
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            background: rgba(13, 13, 13, 0.9);
+        }
+
+        summary {
+            cursor: pointer;
+            color: var(--gold-light);
+            font-weight: 900;
+        }
+
+        details p {
+            padding-top: 13px;
+            color: var(--grey);
+            line-height: 1.65;
+        }
+
+        /* FINAL CTA */
+
+        .final-cta {
+            text-align: center;
+            padding: 58px 30px;
+
+            border: 1px solid rgba(67, 183, 23, 0.5);
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(67, 183, 23, 0.17),
+                    transparent 48%
+                ),
+                #0b0b0b;
+        }
+
+        .final-cta h2 {
+            margin-bottom: 15px;
+            font-size: clamp(2.7rem, 5vw, 5.3rem);
+            line-height: 0.98;
+        }
+
+        .final-cta p {
+            max-width: 680px;
+            margin: 0 auto 24px;
+
+            color: #d3d3d3;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 36px 0;
+            border-top: 1px solid var(--border);
+            color: #969696;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 980px) {
+            .hero,
+            .support-panel,
+            .welcome-grid,
+            .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .included-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .navigation {
+                grid-template-columns: auto 1fr;
+                min-height: 76px;
+            }
+
+            .logo img {
+                width: 135px;
+                height: 60px;
+            }
+
+            .back-link {
+                justify-self: end;
+            }
+
+            .header-actions {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .trust-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trust-item:nth-child(2) {
+                border-right: 0;
+            }
+
+            .trust-item:nth-child(-n+2) {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .included-grid,
+            .benefits-grid,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .support-panel,
+            .contact-details,
+            .contact-form,
+            .welcome-card,
+            .academy-card {
+                padding: 28px;
+            }
+
+            section {
+                padding: 68px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.85rem;
+            }
+
+            .hero-buttons {
+                display: grid;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .offer-card {
+                padding: 27px 23px;
+            }
+
+            .turnaround {
+                width: 138px;
+                height: 138px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <div class="container navigation">
+
+            <a href="index.html"
+               class="logo"
+               aria-label="Anthony Pugh Media homepage">
+
+                <img src="logo.png"
+                     alt="Anthony Pugh Media logo">
+
+            </a>
+
+            <a href="index.html"
+               class="back-link">
+
+                ← Back to Main Website
+
+            </a>
+
+            <div class="header-actions">
+
+                <a class="button button-dark"
+                   href="mailto:antantant2891@outlook.com">
+
+                    Email Us
+
+                </a>
+
+                <a class="button button-green"
+                   href="https://wa.me/447386739451?text=Hi%20Anthony%20and%20Tami%2C%20I%27d%20like%20to%20get%20my%20business%20online."
+                   target="_blank"
+                   rel="noopener">
+
+                    WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="container hero">
+
+            <div>
+
+                <div class="eyebrow">
+                    Let’s stop the scroll
+                </div>
+
+                <h1>
+
+                    Get Your Business
+
+                    <span class="green-text">
+                        Online
+                    </span>
+
+                    <span>
+                        Today
+                    </span>
+
+                </h1>
+
+                <p class="hero-description">
+
+                    Get a modern, professional business website,
+                    social-media setup, secure hosting and friendly
+                    ongoing support without paying a large upfront bill.
+
+                </p>
+
+                <div class="hero-price-line">
+
+                    <div class="hero-price">
+                        £2.49
+                    </div>
+
+                    <div class="hero-price-note">
+                        per week by Direct Debit
+                    </div>
+
+                </div>
+
+                <div class="hero-buttons">
+
+                    <a class="button button-green"
+                       href="#contact">
+
+                        🚀 Get Started Today
+
+                    </a>
+
+                    <a class="button button-dark"
+                       href="https://wa.me/447386739451?text=Hi%20Anthony%20and%20Tami%2C%20I%27d%20like%20to%20get%20my%20business%20online%20for%20%C2%A32.49%20per%20week."
+                       target="_blank"
+                       rel="noopener">
+
+                        💬 Ask Us on WhatsApp
+
+                    </a>
+
+                </div>
+
+                <p class="hero-small-print">
+
+                    £5 one-off setup fee. No large upfront cost.
+                    No long-term contract. Clear, simple pricing.
+
+                </p>
+
+            </div>
+
+            <aside class="offer-card">
+
+                <div class="turnaround">
+
+                    <div>
+
+                        <span>
+                            Be online in as little as
+                        </span>
+
+                        <strong>
+                            24
+                        </strong>
+
+                        <span>
+                            hours
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <h2>
+                    All this is included
+                </h2>
+
+                <ul class="tick-list">
+
+                    <li>
+                        Professional mobile-friendly website
+                    </li>
+
+                    <li>
+                        Facebook and Instagram business setup
+                    </li>
+
+                    <li>
+                        Secure and fast website hosting
+                    </li>
+
+                    <li>
+                        Website updates and maintenance
+                    </li>
+
+                    <li>
+                        Business QR code and website link
+                    </li>
+
+                    <li>
+                        Ongoing support from real people
+                    </li>
+
+                </ul>
+
+            </aside>
+
+        </section>
+
+        <div class="container trust-strip">
+
+            <div class="trust-item">
+
+                <strong>
+                    No Big Bills
+                </strong>
+
+                <span>
+                    Low setup cost
+                </span>
+
+            </div>
+
+            <div class="trust-item">
+
+                <strong>
+                    No Hidden Costs
+                </strong>
+
+                <span>
+                    Clear pricing
+                </span>
+
+            </div>
+
+            <div class="trust-item">
+
+                <strong>
+                    No Long Contract
+                </strong>
+
+                <span>
+                    Simple and flexible
+                </span>
+
+            </div>
+
+            <div class="trust-item">
+
+                <strong>
+                    Real Support
+                </strong>
+
+                <span>
+                    Anthony & Tami
+                </span>
+
+            </div>
+
+        </div>
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="eyebrow">
+                        What’s included in your plan
+                    </div>
+
+                    <h2>
+                        Everything you need to look professional online.
+                    </h2>
+
+                    <p>
+
+                        We take care of the website, hosting,
+                        updates and support so you can focus on
+                        serving your customers and growing your business.
+
+                    </p>
+
+                </div>
+
+                <div class="included-grid">
+
+                    <article class="included-card">
+
+                        <div class="included-icon">
+                            🖥
+                        </div>
+
+                        <h3>
+                            Professional Website
+                        </h3>
+
+                        <p>
+
+                            A modern, mobile-friendly website designed
+                            around your business, services and customers.
+
+                        </p>
+
+                    </article>
+
+                    <article class="included-card">
+
+                        <div class="included-icon">
+                            🔒
+                        </div>
+
+                        <h3>
+                            Secure, Fast Hosting
+                        </h3>
+
+                        <p>
+
+                            Your website is hosted securely and kept
+                            available online without you having to
+                            manage technical systems.
+
+                        </p>
+
+                    </article>
+
+                    <article class="included-card">
+
+                        <div class="included-icon">
+                            ✎
+                        </div>
+
+                        <h3>
+                            Website Updates
+                        </h3>
+
+                        <p>
+
+                            Need a change to your opening hours,
+                            services, wording or contact details?
+                            We are here to help.
+
+                        </p>
+
+                    </article>
+
+                    <article class="included-card">
+
+                        <div class="included-icon">
+                            👍
+                        </div>
+
+                        <h3>
+                            Social Media Setup
+                        </h3>
+
+                        <p>
+
+                            We can help set up your Facebook and
+                            Instagram business profiles and connect
+                            them directly to your website.
+
+                        </p>
+
+                    </article>
+
+                    <article class="included-card">
+
+                        <div class="included-icon">
+                            💬
+                        </div>
+
+                        <h3>
+                            Ongoing Support
+                        </h3>
+
+                        <p>
+
+                            You can contact us when you need a change,
+                            have a question or want honest advice
+                            about your online presence.
+
+                        </p>
+
+                    </article>
+
+                    <article class="included-card">
+
+                        <div class="included-icon">
+                            🎧
+                        </div>
+
+                        <h3>
+                            Real People, Real Support
+                        </h3>
+
+                        <p>
+
+                            No call centres and no faceless agency.
+                            You deal directly with Anthony and Tami.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <div class="container support-panel">
+
+                <div class="support-badge">
+                    🛡
+                </div>
+
+                <div class="support-content">
+
+                    <div class="eyebrow">
+                        Ongoing support and maintenance
+                    </div>
+
+                    <h2>
+
+                        Focus on running your business.
+
+                        <span class="gold-text">
+                            We’ll handle the website.
+                        </span>
+
+                    </h2>
+
+                    <p>
+
+                        We keep your website updated, secure and
+                        running smoothly. When you need a change or
+                        have a question, you can speak directly to us.
+
+                    </p>
+
+                    <p class="signature">
+                        Real people. Real support. No call centres.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="eyebrow">
+                        Why choose Anthony Pugh Media?
+                    </div>
+
+                    <h2>
+                        A personal partnership built to last.
+                    </h2>
+
+                </div>
+
+                <div class="benefits-grid">
+
+                    <div class="benefit">
+
+                        <strong>
+                            Personal Service
+                        </strong>
+
+                        <p>
+
+                            We take the time to understand your
+                            business and treat you like a partner,
+                            not a number.
+
+                        </p>
+
+                    </div>
+
+                    <div class="benefit">
+
+                        <strong>
+                            Unique Websites
+                        </strong>
+
+                        <p>
+
+                            Your website is designed around your
+                            business rather than copied from a
+                            one-size-fits-all template.
+
+                        </p>
+
+                    </div>
+
+                    <div class="benefit">
+
+                        <strong>
+                            Focused on Your Success
+                        </strong>
+
+                        <p>
+
+                            We help you grow with practical advice,
+                            useful tools and a professional online
+                            presence.
+
+                        </p>
+
+                    </div>
+
+                    <div class="benefit">
+
+                        <strong>
+                            Built for Local Business
+                        </strong>
+
+                        <p>
+
+                            We understand the importance of trust,
+                            local customers and getting enquiries
+                            quickly.
+
+                        </p>
+
+                    </div>
+
+                    <div class="benefit">
+
+                        <strong>
+                            A Partnership That Lasts
+                        </strong>
+
+                        <p>
+
+                            We are here for the long run, supporting
+                            your business from launch onwards.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <div class="container welcome-grid">
+
+                <div class="welcome-card">
+
+                    <div class="eyebrow">
+                        Your welcome pack
+                    </div>
+
+                    <h2>
+                        Everything ready for launch.
+                    </h2>
+
+                    <ul class="tick-list">
+
+                        <li>
+                            Your professional website link
+                        </li>
+
+                        <li>
+                            A business QR code for cards, flyers and signs
+                        </li>
+
+                        <li>
+                            A welcome PDF guide to growing your business online
+                        </li>
+
+                        <li>
+                            Simple instructions for sharing your website
+                        </li>
+
+                        <li>
+                            Direct access to Anthony and Tami for support
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="academy-card">
+
+                    <div class="eyebrow">
+                        Extra value
+                    </div>
+
+                    <h2>
+                        Creator Academy Access
+                    </h2>
+
+                    <p>
+
+                        Our customers can access practical guides
+                        covering websites, social media, video content
+                        and business growth.
+
+                    </p>
+
+                    <strong>
+                        Learn how to promote your business with confidence.
+                    </strong>
+
+                    <span class="discount">
+                        50% off PDF guides for customers
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="eyebrow">
+                        Let’s get your business online
+                    </div>
+
+                    <h2>
+                        Start with a quick message or simple form.
+                    </h2>
+
+                    <p>
+
+                        Send us a WhatsApp message for the fastest reply,
+                        or fill in the short form and tell us about
+                        your business.
+
+                    </p>
+
+                </div>
+
+                <div class="contact-wrap">
+
+                    <div class="contact-details">
+
+                        <h2>
+                            Chat with Anthony & Tami
+                        </h2>
+
+                        <p>
+
+                            We’ll explain the process, answer your questions
+                            and tell you exactly what we need to begin.
+
+                        </p>
+
+                        <a class="button button-green button-full"
+                           href="https://wa.me/447386739451?text=Hi%20Anthony%20and%20Tami%2C%20I%27d%20like%20to%20get%20my%20business%20online%20for%20%C2%A32.49%20per%20week."
+                           target="_blank"
+                           rel="noopener">
+
+                            💬 Message Us on WhatsApp
+
+                        </a>
+
+                        <a class="contact-option"
+                           href="tel:+447386739451">
+
+                            <strong>
+                                Telephone
+                            </strong>
+
+                            <span>
+                                07386 739451
+                            </span>
+
+                        </a>
+
+                        <a class="contact-option"
+                           href="mailto:antantant2891@outlook.com?subject=Get%20My%20Business%20Online">
+
+                            <strong>
+                                Email
+                            </strong>
+
+                            <span>
+                                antantant2891@outlook.com
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                    <div class="contact-form">
+
+                        <h2>
+                            Tell us about your business
+                        </h2>
+
+                        <p>
+                            Complete the form and we’ll reply as soon as possible.
+                        </p>
+
+                        <form action="https://formsubmit.co/antantant2891@outlook.com"
+                              method="POST">
+
+                            <input type="hidden"
+                                   name="_subject"
+                                   value="New £2.49 Website Enquiry">
+
+                            <input type="hidden"
+                                   name="_captcha"
+                                   value="false">
+
+                            <input type="hidden"
+                                   name="_template"
+                                   value="table">
+
+                            <div class="form-row">
+
+                                <label>
+                                    Your name
+
+                                    <input type="text"
+                                           name="name"
+                                           autocomplete="name"
+                                           required>
+                                </label>
+
+                                <label>
+                                    Business name
+
+                                    <input type="text"
+                                           name="business"
+                                           autocomplete="organization">
+                                </label>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <label>
+                                    Email address
+
+                                    <input type="email"
+                                           name="email"
+                                           autocomplete="email"
+                                           required>
+                                </label>
+
+                                <label>
+                                    Telephone number
+
+                                    <input type="tel"
+                                           name="telephone"
+                                           autocomplete="tel">
+                                </label>
+
+                            </div>
+
+                            <label>
+                                What type of business do you run?
+
+                                <input type="text"
+                                       name="business_type"
+                                       placeholder="For example: gardener, cleaner, hairdresser">
+                            </label>
+
+                            <label>
+                                Do you already have social media?
+
+                                <select name="social_media">
+
+                                    <option value="">
+                                        Please choose
+                                    </option>
+
+                                    <option value="Yes">
+                                        Yes
+                                    </option>
+
+                                    <option value="No">
+                                        No
+                                    </option>
+
+                                    <option value="Some accounts">
+                                        I have some accounts
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+                                Tell us a little about what you need
+
+                                <textarea name="message"
+                                          placeholder="Tell us about your services, location and what you would like your website to achieve."></textarea>
+                            </label>
+
+                            <button class="button button-gold button-full"
+                                    type="submit">
+
+                                🚀 Send My Enquiry
+
+                            </button>
+
+                            <p class="form-note">
+
+                                The first form submission may ask Anthony Pugh Media
+                                to confirm the email address before enquiries begin arriving.
+
+                            </p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="eyebrow">
+                        Common questions
+                    </div>
+
+                    <h2>
+                        Simple answers before you get started.
+                    </h2>
+
+                </div>
+
+                <div class="faq-grid">
+
+                    <details>
+
+                        <summary>
+                            Is there a large upfront payment?
+                        </summary>
+
+                        <p>
+
+                            No. The setup fee is £5 and the ongoing
+                            service is £2.49 per week by Direct Debit.
+
+                        </p>
+
+                    </details>
+
+                    <details>
+
+                        <summary>
+                            Is there a long-term contract?
+                        </summary>
+
+                        <p>
+
+                            No long-term contract is required. The service
+                            is designed to remain simple and affordable.
+
+                        </p>
+
+                    </details>
+
+                    <details>
+
+                        <summary>
+                            How quickly can my website be ready?
+                        </summary>
+
+                        <p>
+
+                            Once we have the information, images and details
+                            needed, some websites can be online within 24 hours.
+                            More detailed projects may take a little longer.
+
+                        </p>
+
+                    </details>
+
+                    <details>
+
+                        <summary>
+                            Can you help with Facebook and Instagram?
+                        </summary>
+
+                        <p>
+
+                            Yes. We can help set up or improve your business
+                            profiles and connect them directly to your website.
+
+                        </p>
+
+                    </details>
+
+                    <details>
+
+                        <summary>
+                            Can I ask for website changes later?
+                        </summary>
+
+                        <p>
+
+                            Yes. Ongoing support and reasonable website updates
+                            are part of the service.
+
+                        </p>
+
+                    </details>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <div class="container final-cta">
+
+                <h2>
+                    Ready to get your business online?
+                </h2>
+
+                <p>
+
+                    Message Anthony and Tami today and take the first
+                    step towards a professional online presence.
+
+                </p>
+
+                <a class="button button-green"
+                   href="https://wa.me/447386739451?text=Hi%20Anthony%20and%20Tami%2C%20I%27m%20ready%20to%20get%20my%20business%20online."
+                   target="_blank"
+                   rel="noopener">
+
+                    💬 Get Started on WhatsApp
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="video-editing.html">
+                    Video Editing
+                </a>
+
+                <a href="creator-academy.html">
+                    Creator Academy
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms
+                </a>
+
+            </div>
+
+            <p>
+                © 2026 Anthony Pugh Media. Anthony & Tami.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
