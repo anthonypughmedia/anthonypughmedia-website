@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Free Quote Generator | Anthony Pugh Media</title>
+
+    <meta
+        name="description"
+        content="Create, calculate, print and download a professional business quotation for free with Anthony Pugh Media."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --background: #050b14;
+            --panel: #101d2f;
+            --primary: #18d39e;
+            --text: #ffffff;
+            --muted: #a9b6c9;
+            --border: rgba(255, 255, 255, 0.11);
+            --danger: #ff6b6b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(24, 211, 158, 0.14),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050b14,
+                    #07111f
+                );
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 6%;
+
+            background: rgba(5, 11, 20, 0.9);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .top-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .top-link:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            max-width: 950px;
+            margin: auto;
+            padding: 68px 20px 40px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 9px 16px;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.13);
+            border: 1px solid rgba(24, 211, 158, 0.3);
+            border-radius: 50px;
+
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            margin-bottom: 20px;
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            line-height: 1;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 730px;
+            margin: auto;
+
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        .free-label {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+
+            font-weight: bold;
+        }
+
+        .free-label strong {
+            color: var(--primary);
+        }
+
+        .main-wrap {
+            width: min(1450px, 95%);
+            margin: 0 auto 70px;
+
+            display: grid;
+            grid-template-columns: 440px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .panel {
+            padding: 24px;
+
+            background: rgba(16, 29, 47, 0.96);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .panel h2 {
+            margin-bottom: 8px;
+        }
+
+        .panel-subtitle {
+            margin-bottom: 22px;
+
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            margin: 25px 0 14px;
+            padding-bottom: 8px;
+
+            color: var(--primary);
+            border-bottom: 1px solid var(--border);
+
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+
+            font-size: 0.88rem;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 13px;
+
+            color: #ffffff;
+            background: #091526;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(24, 211, 158, 0.1);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin: 15px 0;
+            padding: 13px;
+
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 11px;
+        }
+
+        .checkbox-row input {
+            width: auto;
+            transform: scale(1.2);
+        }
+
+        .checkbox-row label {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .item-editor {
+            margin-bottom: 14px;
+            padding: 14px;
+
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+        }
+
+        .item-editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 90px 110px;
+            gap: 9px;
+        }
+
+        .remove-item {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+
+            color: #ffffff;
+            background: rgba(255, 107, 107, 0.15);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            border-radius: 9px;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .add-item-btn,
+        .print-btn {
+            width: 100%;
+            padding: 15px;
+
+            border-radius: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .add-item-btn {
+            margin-top: 5px;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.1);
+            border: 1px solid rgba(24, 211, 158, 0.35);
+        }
+
+        .print-btn {
+            margin-top: 18px;
+
+            color: #04120e;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #63f4cb
+            );
+            border: 0;
+        }
+
+        .add-item-btn:hover,
+        .print-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .small-note {
+            margin-top: 15px;
+            padding: 13px;
+
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 11px;
+
+            font-size: 0.83rem;
+            line-height: 1.5;
+        }
+
+        .quote-preview-panel {
+            overflow: auto;
+        }
+
+        .preview-heading {
+            margin-bottom: 18px;
+        }
+
+        .preview-heading p {
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .quote-page {
+            width: 100%;
+            max-width: 900px;
+            min-height: 1050px;
+            margin: auto;
+            padding: 50px;
+
+            color: #17202a;
+            background: #ffffff;
+            border-radius: 5px;
+
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.28);
+        }
+
+        .quote-top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 25px;
+
+            padding-bottom: 25px;
+            border-bottom: 4px solid #18d39e;
+        }
+
+        .quote-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .quote-logo {
+            display: none;
+            width: 88px;
+            height: 88px;
+            object-fit: contain;
+        }
+
+        .quote-business-name {
+            color: #101820;
+            font-size: 1.65rem;
+            font-weight: 900;
+        }
+
+        .quote-business-contact {
+            margin-top: 8px;
+
+            color: #59636e;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            white-space: pre-line;
+        }
+
+        .quote-title-area {
+            text-align: right;
+        }
+
+        .quote-title {
+            color: #18a77f;
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .quote-meta {
+            margin-top: 12px;
+
+            color: #4f5964;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .quote-meta strong {
+            color: #17202a;
+        }
+
+        .address-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+
+            margin: 35px 0;
+        }
+
+        .address-block h3 {
+            margin-bottom: 10px;
+
+            color: #18a77f;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        .address-block p {
+            color: #4f5964;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .customer-name-preview {
+            color: #17202a !important;
+            font-weight: bold;
+        }
+
+        .quote-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        .quote-table th {
+            padding: 13px 11px;
+
+            color: #ffffff;
+            background: #102033;
+
+            font-size: 0.82rem;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .quote-table td {
+            padding: 14px 11px;
+
+            border-bottom: 1px solid #e4e8eb;
+
+            color: #47515c;
+            vertical-align: top;
+        }
+
+        .number-cell {
+            text-align: right !important;
+            white-space: nowrap;
+        }
+
+        .totals-wrap {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+
+        .totals-table {
+            width: min(360px, 100%);
+            border-collapse: collapse;
+        }
+
+        .totals-table td {
+            padding: 10px 8px;
+            color: #4f5964;
+        }
+
+        .totals-table td:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .grand-total td {
+            padding-top: 15px;
+
+            color: #17202a;
+            border-top: 3px solid #18d39e;
+
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        .quote-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+
+            margin-top: 45px;
+        }
+
+        .bottom-box {
+            padding: 18px;
+
+            background: #f4f7f8;
+            border-radius: 8px;
+        }
+
+        .bottom-box h3 {
+            margin-bottom: 10px;
+
+            color: #18a77f;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+        }
+
+        .bottom-box p {
+            color: #59636e;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .acceptance-box {
+            margin-top: 35px;
+            padding: 20px;
+
+            border: 2px solid #e1e6e8;
+            border-radius: 8px;
+        }
+
+        .acceptance-box h3 {
+            margin-bottom: 10px;
+            color: #18a77f;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .signature-lines {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 28px;
+        }
+
+        .signature-line {
+            padding-top: 7px;
+            border-top: 1px solid #8e979f;
+
+            color: #69737d;
+            font-size: 0.8rem;
+        }
+
+        .quote-footer-message {
+            margin-top: 45px;
+            padding-top: 18px;
+
+            color: #7b858f;
+            border-top: 1px solid #e1e5e8;
+
+            text-align: center;
+            font-size: 0.82rem;
+        }
+
+        .promo {
+            width: min(1120px, 92%);
+            margin: 0 auto 70px;
+            padding: 38px;
+
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 25px;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24, 211, 158, 0.18),
+                    rgba(24, 211, 158, 0.03)
+                ),
+                var(--panel);
+
+            border: 1px solid rgba(24, 211, 158, 0.25);
+            border-radius: 24px;
+        }
+
+        .promo h2 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .promo p {
+            max-width: 700px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .promo-btn {
+            padding: 16px 22px;
+
+            color: #04120e;
+            background: var(--primary);
+            border-radius: 12px;
+
+            text-decoration: none;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        footer {
+            padding: 30px 20px;
+
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+        }
+
+        @media (max-width: 1050px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .two-column,
+            .item-editor-grid,
+            .address-grid,
+            .quote-bottom,
+            .signature-lines,
+            .promo {
+                grid-template-columns: 1fr;
+            }
+
+            .top-link {
+                display: none;
+            }
+
+            .quote-page {
+                min-width: 730px;
+            }
+
+            .quote-preview-panel {
+                padding: 12px;
+            }
+
+            .promo {
+                text-align: center;
+            }
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+            }
+
+            .topbar,
+            .hero,
+            .editor-panel,
+            .preview-heading,
+            .promo,
+            footer {
+                display: none !important;
+            }
+
+            .main-wrap {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+
+            .quote-preview-panel {
+                padding: 0;
+                background: #ffffff;
+                border: 0;
+                box-shadow: none;
+            }
+
+            .quote-page {
+                width: 100%;
+                max-width: none;
+                min-width: 0;
+                min-height: 0;
+                padding: 25px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            @page {
+                size: A4;
+                margin: 8mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        ANTHONY PUGH <span>MEDIA</span>
+    </div>
+
+    <a
+        class="top-link"
+        href="https://anthonypughmedia.co.uk"
+    >
+        Visit our main website
+    </a>
+</header>
+
+<section class="hero">
+    <div class="badge">
+        Free business tool
+    </div>
+
+    <h1>
+        Free <span>Quote Generator</span>
+    </h1>
+
+    <p>
+        Create a professional business quotation, calculate prices
+        automatically and print or save it as a PDF. No registration,
+        subscription or payment required.
+    </p>
+
+    <div class="free-label">
+        Create and download: <strong>100% FREE</strong>
+    </div>
+</section>
+
+<main class="main-wrap">
+
+    <section class="panel editor-panel">
+
+        <h2>Quote details</h2>
+
+        <p class="panel-subtitle">
+            Enter your information and your quotation will update automatically.
+        </p>
+
+        <div class="section-title">Your business</div>
+
+        <div class="field">
+            <label for="logoUpload">Business logo — optional</label>
+
+            <input
+                id="logoUpload"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+            >
+        </div>
+
+        <div class="field">
+            <label for="businessName">Business name</label>
+
+            <input
+                id="businessName"
+                type="text"
+                value="Your Business Name"
+            >
+        </div>
+
+        <div class="field">
+            <label for="businessAddress">Business address</label>
+
+            <textarea id="businessAddress">Business address
+Town or city
+Postcode</textarea>
+        </div>
+
+        <div class="two-column">
+
+            <div class="field">
+                <label for="businessEmail">Email</label>
+
+                <input
+                    id="businessEmail"
+                    type="email"
+                    value="hello@example.co.uk"
+                >
+            </div>
+
+            <div class="field">
+                <label for="businessPhone">Telephone</label>
+
+                <input
+                    id="businessPhone"
+                    type="text"
+                    value="07123 456789"
+                >
+            </div>
+
+        </div>
+
+        <div class="section-title">Customer</div>
+
+        <div class="field">
+            <label for="customerName">Customer or company name</label>
+
+            <input
+                id="customerName"
+                type="text"
+                value="Customer Name"
+            >
+        </div>
+
+        <div class="field">
+            <label for="customerAddress">Customer address</label>
+
+            <textarea id="customerAddress">Customer address
+Town or city
+Postcode</textarea>
+        </div>
+
+        <div class="section-title">Quote information</div>
+
+        <div class="two-column">
+
+            <div class="field">
+                <label for="quoteNumber">Quote number</label>
+
+                <input
+                    id="quoteNumber"
+                    type="text"
+                    value="QUOTE-001"
+                >
+            </div>
+
+            <div class="field">
+                <label for="currency">Currency</label>
+
+                <select id="currency">
+                    <option value="£">GBP — £</option>
+                    <option value="€">EUR — €</option>
+                    <option value="$">USD — $</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="two-column">
+
+            <div class="field">
+                <label for="quoteDate">Quote date</label>
+                <input id="quoteDate" type="date">
+            </div>
+
+            <div class="field">
+                <label for="validUntil">Valid until</label>
+                <input id="validUntil" type="date">
+            </div>
+
+        </div>
+
+        <div class="field">
+            <label for="projectTitle">Project or job title</label>
+
+            <input
+                id="projectTitle"
+                type="text"
+                value="Proposed work and services"
+            >
+        </div>
+
+        <div class="section-title">Items or services</div>
+
+        <div id="itemEditors"></div>
+
+        <button
+            class="add-item-btn"
+            type="button"
+            onclick="addItem()"
+        >
+            + Add Another Item
+        </button>
+
+        <div class="section-title">Tax and discount</div>
+
+        <div class="checkbox-row">
+            <input id="vatEnabled" type="checkbox">
+
+            <label for="vatEnabled">
+                Add VAT or sales tax
+            </label>
+        </div>
+
+        <div
+            class="two-column"
+            id="vatOptions"
+            style="display:none;"
+        >
+            <div class="field">
+                <label for="vatLabel">Tax name</label>
+
+                <input
+                    id="vatLabel"
+                    type="text"
+                    value="VAT"
+                >
+            </div>
+
+            <div class="field">
+                <label for="vatRate">Tax rate %</label>
+
+                <input
+                    id="vatRate"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="20"
+                >
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="discount">Discount amount</label>
+
+            <input
+                id="discount"
+                type="number"
+                min="0"
+                step="0.01"
+                value="0"
+            >
+        </div>
+
+        <div class="section-title">Terms and notes</div>
+
+        <div class="field">
+            <label for="terms">Terms and conditions</label>
+
+            <textarea id="terms">This quotation is valid until the date shown above. Prices may change if the agreed work or requirements are altered. Work will begin once the quotation has been accepted.</textarea>
+        </div>
+
+        <div class="field">
+            <label for="quoteNotes">Additional notes</label>
+
+            <textarea id="quoteNotes">Thank you for the opportunity to provide this quotation. Please contact us with any questions.</textarea>
+        </div>
+
+        <button
+            class="print-btn"
+            type="button"
+            onclick="printQuote()"
+        >
+            Print or Save as PDF
+        </button>
+
+        <div class="small-note">
+            On the print screen, select “Save as PDF” to download the
+            quotation. Check all prices, tax details and terms before
+            sending it to your customer.
+        </div>
+
+    </section>
+
+    <section class="panel quote-preview-panel">
+
+        <div class="preview-heading">
+            <h2>Quote preview</h2>
+            <p>Your quotation updates as you type.</p>
+        </div>
+
+        <article class="quote-page">
+
+            <div class="quote-top">
+
+                <div class="quote-logo-wrap">
+
+                    <img
+                        id="quoteLogo"
+                        class="quote-logo"
+                        alt="Business logo"
+                    >
+
+                    <div>
+                        <div
+                            class="quote-business-name"
+                            id="previewBusinessName"
+                        >
+                            Your Business Name
+                        </div>
+
+                        <div
+                            class="quote-business-contact"
+                            id="previewBusinessContact"
+                        ></div>
+                    </div>
+
+                </div>
+
+                <div class="quote-title-area">
+
+                    <div class="quote-title">
+                        QUOTATION
+                    </div>
+
+                    <div class="quote-meta">
+
+                        <div>
+                            <strong>Quote:</strong>
+                            <span id="previewQuoteNumber"></span>
+                        </div>
+
+                        <div>
+                            <strong>Date:</strong>
+                            <span id="previewQuoteDate"></span>
+                        </div>
+
+                        <div>
+                            <strong>Valid until:</strong>
+                            <span id="previewValidUntil"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="address-grid">
+
+                <div class="address-block">
+                    <h3>From</h3>
+
+                    <p id="previewFromAddress"></p>
+                </div>
+
+                <div class="address-block">
+                    <h3>Prepared for</h3>
+
+                    <p
+                        class="customer-name-preview"
+                        id="previewCustomerName"
+                    ></p>
+
+                    <p id="previewCustomerAddress"></p>
+                </div>
+
+            </div>
+
+            <div class="address-block">
+                <h3>Project</h3>
+
+                <p
+                    class="customer-name-preview"
+                    id="previewProjectTitle"
+                ></p>
+            </div>
+
+            <table class="quote-table">
+
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th class="number-cell">Quantity</th>
+                        <th class="number-cell">Price</th>
+                        <th class="number-cell">Total</th>
+                    </tr>
+                </thead>
+
+                <tbody id="previewItems"></tbody>
+
+            </table>
+
+            <div class="totals-wrap">
+
+                <table class="totals-table">
+
+                    <tr>
+                        <td>Subtotal</td>
+                        <td id="previewSubtotal">£0.00</td>
+                    </tr>
+
+                    <tr id="discountRow" style="display:none;">
+                        <td>Discount</td>
+                        <td id="previewDiscount">-£0.00</td>
+                    </tr>
+
+                    <tr id="vatRow" style="display:none;">
+                        <td id="previewVatLabel">VAT</td>
+                        <td id="previewVat">£0.00</td>
+                    </tr>
+
+                    <tr class="grand-total">
+                        <td>Quoted total</td>
+                        <td id="previewGrandTotal">£0.00</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="quote-bottom">
+
+                <div class="bottom-box">
+                    <h3>Terms and conditions</h3>
+                    <p id="previewTerms"></p>
+                </div>
+
+                <div class="bottom-box">
+                    <h3>Additional notes</h3>
+                    <p id="previewNotes"></p>
+                </div>
+
+            </div>
+
+            <div class="acceptance-box">
+
+                <h3>Quote acceptance</h3>
+
+                <p>
+                    I confirm that I accept this quotation and authorise
+                    the business named above to carry out the described work.
+                </p>
+
+                <div class="signature-lines">
+
+                    <div class="signature-line">
+                        Customer signature
+                    </div>
+
+                    <div class="signature-line">
+                        Date
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="quote-footer-message">
+                Quotation created using the free Anthony Pugh Media Quote Generator.
+            </div>
+
+        </article>
+
+    </section>
+
+</main>
+
+<section class="promo">
+
+    <div>
+        <h2>Need a professional business website?</h2>
+
+        <p>
+            Anthony Pugh Media creates affordable websites for trades,
+            small businesses and independent companies, backed by
+            friendly and personal support from Anthony and Tami.
+        </p>
+    </div>
+
+    <a
+        class="promo-btn"
+        href="https://wa.me/447386739451?text=Hello%20Anthony%20and%20Tami%2C%20I%20used%20your%20free%20quote%20generator%20and%20would%20like%20to%20ask%20about%20a%20website."
+        target="_blank"
+        rel="noopener"
+    >
+        Message on WhatsApp
+    </a>
+
+</section>
+
+<footer>
+    © <span id="year"></span>
+    Anthony Pugh Media · Affordable websites and digital support
+</footer>
+
+<script>
+    let itemCounter = 0;
+
+    function escapeHTML(value) {
+        return String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function getValue(id) {
+        return document.getElementById(id).value.trim();
+    }
+
+    function getNumber(id) {
+        const number = parseFloat(
+            document.getElementById(id).value
+        );
+
+        return Number.isFinite(number) ? number : 0;
+    }
+
+    function formatMoney(amount) {
+        const currency =
+            document.getElementById("currency").value;
+
+        return currency + amount.toFixed(2);
+    }
+
+    function formatDate(value) {
+        if (!value) {
+            return "";
+        }
+
+        const date =
+            new Date(value + "T12:00:00");
+
+        return date.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        });
+    }
+
+    function formatInputDate(date) {
+        const year =
+            date.getFullYear();
+
+        const month =
+            String(date.getMonth() + 1).padStart(2, "0");
+
+        const day =
+            String(date.getDate()).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+    }
+
+    function setDefaultDates() {
+        const today = new Date();
+        const validUntil = new Date();
+
+        validUntil.setDate(
+            today.getDate() + 30
+        );
+
+        document.getElementById("quoteDate").value =
+            formatInputDate(today);
+
+        document.getElementById("validUntil").value =
+            formatInputDate(validUntil);
+    }
+
+    function addItem(
+        description = "Professional service",
+        quantity = 1,
+        price = 100
+    ) {
+        itemCounter++;
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "item-editor";
+
+        wrapper.dataset.itemId =
+            itemCounter;
+
+        wrapper.innerHTML = `
+            <div class="item-editor-grid">
+
+                <div class="field">
+                    <label>Description</label>
+
+                    <input
+                        class="item-description"
+                        type="text"
+                        value="${escapeHTML(description)}"
+                    >
+                </div>
+
+                <div class="field">
+                    <label>Quantity</label>
+
+                    <input
+                        class="item-quantity"
+                        type="number"
+                        min="0"
+                        step="1"
+                        value="${quantity}"
+                    >
+                </div>
+
+                <div class="field">
+                    <label>Price</label>
+
+                    <input
+                        class="item-price"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="${price}"
+                    >
+                </div>
+
+            </div>
+
+            <button
+                class="remove-item"
+                type="button"
+                onclick="removeItem(this)"
+            >
+                Remove Item
+            </button>
+        `;
+
+        document
+            .getElementById("itemEditors")
+            .appendChild(wrapper);
+
+        wrapper
+            .querySelectorAll("input")
+            .forEach(input => {
+                input.addEventListener(
+                    "input",
+                    updateQuote
+                );
+            });
+
+        updateQuote();
+    }
+
+    function removeItem(button) {
+        const items =
+            document.querySelectorAll(
+                ".item-editor"
+            );
+
+        if (items.length <= 1) {
+            alert(
+                "Your quotation must contain at least one item."
+            );
+
+            return;
+        }
+
+        button
+            .closest(".item-editor")
+            .remove();
+
+        updateQuote();
+    }
+
+    function getItems() {
+        return Array
+            .from(
+                document.querySelectorAll(
+                    ".item-editor"
+                )
+            )
+            .map(item => {
+                const description =
+                    item.querySelector(
+                        ".item-description"
+                    ).value.trim() || "Item";
+
+                const quantity =
+                    parseFloat(
+                        item.querySelector(
+                            ".item-quantity"
+                        ).value
+                    ) || 0;
+
+                const price =
+                    parseFloat(
+                        item.querySelector(
+                            ".item-price"
+                        ).value
+                    ) || 0;
+
+                return {
+                    description,
+                    quantity,
+                    price,
+                    total: quantity * price
+                };
+            });
+    }
+
+    function updateQuote() {
+        document.getElementById(
+            "previewBusinessName"
+        ).textContent =
+            getValue("businessName") ||
+            "Your Business Name";
+
+        document.getElementById(
+            "previewBusinessContact"
+        ).textContent =
+            [
+                getValue("businessEmail"),
+                getValue("businessPhone")
+            ]
+                .filter(Boolean)
+                .join("\n");
+
+        document.getElementById(
+            "previewFromAddress"
+        ).textContent =
+            getValue("businessAddress");
+
+        document.getElementById(
+            "previewCustomerName"
+        ).textContent =
+            getValue("customerName") ||
+            "Customer Name";
+
+        document.getElementById(
+            "previewCustomerAddress"
+        ).textContent =
+            getValue("customerAddress");
+
+        document.getElementById(
+            "previewProjectTitle"
+        ).textContent =
+            getValue("projectTitle") ||
+            "Proposed work and services";
+
+        document.getElementById(
+            "previewQuoteNumber"
+        ).textContent =
+            getValue("quoteNumber");
+
+        document.getElementById(
+            "previewQuoteDate"
+        ).textContent =
+            formatDate(
+                document.getElementById(
+                    "quoteDate"
+                ).value
+            );
+
+        document.getElementById(
+            "previewValidUntil"
+        ).textContent =
+            formatDate(
+                document.getElementById(
+                    "validUntil"
+                ).value
+            );
+
+        document.getElementById(
+            "previewTerms"
+        ).textContent =
+            getValue("terms");
+
+        document.getElementById(
+            "previewNotes"
+        ).textContent =
+            getValue("quoteNotes");
+
+        const items =
+            getItems();
+
+        const previewItems =
+            document.getElementById(
+                "previewItems"
+            );
+
+        previewItems.innerHTML =
+            "";
+
+        let subtotal = 0;
+
+        items.forEach(item => {
+            subtotal += item.total;
+
+            const row =
+                document.createElement("tr");
+
+            row.innerHTML = `
+                <td>
+                    ${escapeHTML(item.description)}
+                </td>
+
+                <td class="number-cell">
+                    ${item.quantity}
+                </td>
+
+                <td class="number-cell">
+                    ${formatMoney(item.price)}
+                </td>
+
+                <td class="number-cell">
+                    ${formatMoney(item.total)}
+                </td>
+            `;
+
+            previewItems.appendChild(row);
+        });
+
+        const discount =
+            Math.min(
+                getNumber("discount"),
+                subtotal
+            );
+
+        const taxableAmount =
+            Math.max(
+                0,
+                subtotal - discount
+            );
+
+        const vatEnabled =
+            document.getElementById(
+                "vatEnabled"
+            ).checked;
+
+        const vatRate =
+            getNumber("vatRate");
+
+        const vatAmount =
+            vatEnabled
+                ? taxableAmount * (vatRate / 100)
+                : 0;
+
+        const grandTotal =
+            taxableAmount + vatAmount;
+
+        document.getElementById(
+            "previewSubtotal"
+        ).textContent =
+            formatMoney(subtotal);
+
+        document.getElementById(
+            "previewDiscount"
+        ).textContent =
+            "-" + formatMoney(discount);
+
+        document.getElementById(
+            "previewVat"
+        ).textContent =
+            formatMoney(vatAmount);
+
+        document.getElementById(
+            "previewGrandTotal"
+        ).textContent =
+            formatMoney(grandTotal);
+
+        document.getElementById(
+            "discountRow"
+        ).style.display =
+            discount > 0
+                ? "table-row"
+                : "none";
+
+        document.getElementById(
+            "vatRow"
+        ).style.display =
+            vatEnabled
+                ? "table-row"
+                : "none";
+
+        const vatLabel =
+            getValue("vatLabel") || "Tax";
+
+        document.getElementById(
+            "previewVatLabel"
+        ).textContent =
+            `${vatLabel} (${vatRate}%)`;
+    }
+
+    function toggleVatOptions() {
+        const enabled =
+            document.getElementById(
+                "vatEnabled"
+            ).checked;
+
+        document.getElementById(
+            "vatOptions"
+        ).style.display =
+            enabled
+                ? "grid"
+                : "none";
+
+        updateQuote();
+    }
+
+    function handleLogoUpload(event) {
+        const file =
+            event.target.files[0];
+
+        const logo =
+            document.getElementById(
+                "quoteLogo"
+            );
+
+        if (!file) {
+            logo.style.display =
+                "none";
+
+            logo.removeAttribute(
+                "src"
+            );
+
+            return;
+        }
+
+        const reader =
+            new FileReader();
+
+        reader.onload =
+            function(loadEvent) {
+                logo.src =
+                    loadEvent.target.result;
+
+                logo.style.display =
+                    "block";
+            };
+
+        reader.readAsDataURL(file);
+    }
+
+    function printQuote() {
+        updateQuote();
+
+        setTimeout(() => {
+            window.print();
+        }, 100);
+    }
+
+    document
+        .querySelectorAll(
+            "input, textarea, select"
+        )
+        .forEach(element => {
+            if (
+                element.id !== "logoUpload" &&
+                element.id !== "vatEnabled"
+            ) {
+                element.addEventListener(
+                    "input",
+                    updateQuote
+                );
+
+                element.addEventListener(
+                    "change",
+                    updateQuote
+                );
+            }
+        });
+
+    document
+        .getElementById("vatEnabled")
+        .addEventListener(
+            "change",
+            toggleVatOptions
+        );
+
+    document
+        .getElementById("logoUpload")
+        .addEventListener(
+            "change",
+            handleLogoUpload
+        );
+
+    document.getElementById(
+        "year"
+    ).textContent =
+        new Date().getFullYear();
+
+    setDefaultDates();
+
+    addItem(
+        "Initial work or service",
+        1,
+        100
+    );
+
+    addItem(
+        "Materials or additional service",
+        1,
+        50
+    );
+
+    updateQuote();
+</script>
+
+</body>
+</html>
