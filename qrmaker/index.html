@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Free QR Code Maker | Anthony Pugh Media</title>
+
+    <meta
+        name="description"
+        content="Create and download a free custom QR code for your website, WhatsApp, Facebook, email, telephone number or business."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --background: #050b14;
+            --panel: #101d2f;
+            --panel-light: #172840;
+            --primary: #18d39e;
+            --primary-dark: #0fa97e;
+            --text: #ffffff;
+            --muted: #a9b6c9;
+            --border: rgba(255, 255, 255, 0.11);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(24, 211, 158, 0.14),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050b14,
+                    #07111f
+                );
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 6%;
+
+            border-bottom: 1px solid var(--border);
+
+            background: rgba(5, 11, 20, 0.88);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .top-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .top-link:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            max-width: 900px;
+            margin: auto;
+            padding: 70px 20px 42px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+
+            margin-bottom: 20px;
+            padding: 9px 16px;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.13);
+            border: 1px solid rgba(24, 211, 158, 0.3);
+            border-radius: 50px;
+
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            margin-bottom: 20px;
+
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            line-height: 1;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .free-label {
+            display: inline-block;
+
+            margin-top: 26px;
+            padding: 12px 20px;
+
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+
+            font-weight: bold;
+        }
+
+        .free-label strong {
+            color: var(--primary);
+        }
+
+        .main-wrap {
+            width: min(1120px, 92%);
+            margin: 0 auto 70px;
+
+            display: grid;
+            grid-template-columns: 390px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .panel {
+            padding: 25px;
+
+            background: rgba(16, 29, 47, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .panel h2 {
+            margin-bottom: 8px;
+        }
+
+        .panel-subtitle {
+            margin-bottom: 22px;
+
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+
+            color: #ffffff;
+            background: #091526;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(24, 211, 158, 0.1);
+        }
+
+        .colour-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        input[type="color"] {
+            height: 50px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .generate-btn,
+        .download-btn {
+            width: 100%;
+            padding: 16px;
+
+            border: 0;
+            border-radius: 13px;
+
+            color: #04120e;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #63f4cb
+            );
+
+            font-weight: 800;
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .generate-btn:hover,
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(24, 211, 158, 0.25);
+        }
+
+        .download-btn {
+            margin-top: 12px;
+        }
+
+        .small-note {
+            margin-top: 16px;
+            padding: 13px;
+
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
+        .preview-panel {
+            min-height: 550px;
+            text-align: center;
+        }
+
+        .preview-box {
+            min-height: 385px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    45deg,
+                    #ececec 25%,
+                    transparent 25%
+                ),
+                linear-gradient(
+                    -45deg,
+                    #ececec 25%,
+                    transparent 25%
+                ),
+                linear-gradient(
+                    45deg,
+                    transparent 75%,
+                    #ececec 75%
+                ),
+                linear-gradient(
+                    -45deg,
+                    transparent 75%,
+                    #ececec 75%
+                );
+
+            background-size: 22px 22px;
+            background-position:
+                0 0,
+                0 11px,
+                11px -11px,
+                -11px 0;
+
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 22px;
+
+            background: #ffffff;
+            border-radius: 12px;
+        }
+
+        #qrcode img,
+        #qrcode canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .preview-information {
+            margin-top: 20px;
+
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .status-message {
+            min-height: 23px;
+            margin-top: 12px;
+
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .promo {
+            width: min(1120px, 92%);
+            margin: 0 auto 70px;
+            padding: 38px;
+
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 25px;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24, 211, 158, 0.18),
+                    rgba(24, 211, 158, 0.03)
+                ),
+                var(--panel);
+
+            border: 1px solid rgba(24, 211, 158, 0.25);
+            border-radius: 24px;
+        }
+
+        .promo h2 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .promo p {
+            max-width: 700px;
+
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .promo-btn {
+            padding: 16px 22px;
+
+            color: #04120e;
+            background: var(--primary);
+            border-radius: 12px;
+
+            text-decoration: none;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        footer {
+            padding: 30px 20px;
+
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+        }
+
+        @media (max-width: 850px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .promo {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .topbar {
+                padding: 15px 18px;
+            }
+
+            .top-link {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+
+            .colour-row {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-box {
+                min-height: 330px;
+                padding: 18px;
+            }
+
+            .promo {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        ANTHONY PUGH <span>MEDIA</span>
+    </div>
+
+    <a
+        class="top-link"
+        href="https://anthonypughmedia.co.uk"
+    >
+        Visit our main website
+    </a>
+
+</header>
+
+<section class="hero">
+
+    <div class="badge">
+        Free business tool
+    </div>
+
+    <h1>
+        Free <span>QR Code Maker</span>
+    </h1>
+
+    <p>
+        Create a custom QR code for your website, WhatsApp,
+        Facebook page, email address, phone number or any other
+        online destination. No account and no payment required.
+    </p>
+
+    <div class="free-label">
+        Create and download: <strong>100% FREE</strong>
+    </div>
+
+</section>
+
+<main class="main-wrap">
+
+    <section class="panel">
+
+        <h2>Create your QR code</h2>
+
+        <p class="panel-subtitle">
+            Choose what your QR code should open and enter the details below.
+        </p>
+
+        <div class="field">
+
+            <label for="qrType">
+                What should the QR code do?
+            </label>
+
+            <select id="qrType" onchange="changeInputType()">
+
+                <option value="website">
+                    Open a website
+                </option>
+
+                <option value="whatsapp">
+                    Open WhatsApp
+                </option>
+
+                <option value="facebook">
+                    Open a Facebook page
+                </option>
+
+                <option value="email">
+                    Send an email
+                </option>
+
+                <option value="phone">
+                    Call a phone number
+                </option>
+
+                <option value="text">
+                    Display text
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label id="contentLabel" for="qrContent">
+                Website address
+            </label>
+
+            <textarea
+                id="qrContent"
+                placeholder="https://yourwebsite.co.uk"
+            >https://anthonypughmedia.co.uk</textarea>
+
+        </div>
+
+        <div class="colour-row">
+
+            <div class="field">
+
+                <label for="darkColour">
+                    QR colour
+                </label>
+
+                <input
+                    id="darkColour"
+                    type="color"
+                    value="#07111f"
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label for="lightColour">
+                    Background
+                </label>
+
+                <input
+                    id="lightColour"
+                    type="color"
+                    value="#ffffff"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="field">
+
+            <label for="qrSize">
+                QR code size
+            </label>
+
+            <select id="qrSize">
+
+                <option value="250">
+                    Standard
+                </option>
+
+                <option value="350" selected>
+                    Large
+                </option>
+
+                <option value="500">
+                    Extra large
+                </option>
+
+            </select>
+
+        </div>
+
+        <button
+            class="generate-btn"
+            onclick="generateQRCode()"
+        >
+            Generate QR Code
+        </button>
+
+        <div class="small-note">
+            Always scan and test your QR code before adding it to signs,
+            leaflets, menus, business cards or printed material.
+        </div>
+
+    </section>
+
+    <section class="panel preview-panel">
+
+        <h2>Your QR code</h2>
+
+        <p class="panel-subtitle">
+            Your finished code will appear below.
+        </p>
+
+        <div class="preview-box">
+
+            <div id="qrcode"></div>
+
+        </div>
+
+        <button
+            class="download-btn"
+            onclick="downloadQRCode()"
+        >
+            Download Free PNG
+        </button>
+
+        <div
+            class="status-message"
+            id="statusMessage"
+        ></div>
+
+        <p class="preview-information">
+            The downloaded image can be used on websites, flyers,
+            menus, posters, business cards and social media.
+        </p>
+
+    </section>
+
+</main>
+
+<section class="promo">
+
+    <div>
+
+        <h2>
+            Need a website for your business?
+        </h2>
+
+        <p>
+            Anthony Pugh Media creates affordable professional websites
+            for small businesses, trades and independent companies,
+            backed by personal UK support.
+        </p>
+
+    </div>
+
+    <a
+        class="promo-btn"
+        href="https://wa.me/447386739451?text=Hello%20Anthony%20and%20Tami%2C%20I%20used%20your%20free%20QR%20code%20maker%20and%20would%20like%20to%20ask%20about%20a%20website."
+        target="_blank"
+        rel="noopener"
+    >
+        Message on WhatsApp
+    </a>
+
+</section>
+
+<footer>
+    © <span id="year"></span>
+    Anthony Pugh Media · Affordable websites and digital support
+</footer>
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+></script>
+
+<script>
+    let currentQRCode = null;
+
+    const inputSettings = {
+        website: {
+            label: "Website address",
+            placeholder: "https://yourwebsite.co.uk",
+            example: "https://anthonypughmedia.co.uk"
+        },
+
+        whatsapp: {
+            label: "WhatsApp number",
+            placeholder: "Example: 447386739451",
+            example: "447386739451"
+        },
+
+        facebook: {
+            label: "Facebook page address",
+            placeholder: "https://facebook.com/yourpage",
+            example: "https://facebook.com/"
+        },
+
+        email: {
+            label: "Email address",
+            placeholder: "hello@example.co.uk",
+            example: "hello@example.co.uk"
+        },
+
+        phone: {
+            label: "Phone number",
+            placeholder: "Example: 07386739451",
+            example: "07386739451"
+        },
+
+        text: {
+            label: "Text or message",
+            placeholder: "Enter the text you want to display",
+            example: "Created using Anthony Pugh Media's free QR maker."
+        }
+    };
+
+    function changeInputType() {
+        const selectedType =
+            document.getElementById("qrType").value;
+
+        const settings =
+            inputSettings[selectedType];
+
+        const contentInput =
+            document.getElementById("qrContent");
+
+        document.getElementById("contentLabel").textContent =
+            settings.label;
+
+        contentInput.placeholder =
+            settings.placeholder;
+
+        contentInput.value =
+            settings.example;
+
+        generateQRCode();
+    }
+
+    function cleanPhoneNumber(number) {
+        return number.replace(/[^\d+]/g, "");
+    }
+
+    function buildQRContent() {
+        const selectedType =
+            document.getElementById("qrType").value;
+
+        const enteredContent =
+            document.getElementById("qrContent").value.trim();
+
+        if (!enteredContent) {
+            return "";
+        }
+
+        if (selectedType === "website") {
+            if (
+                enteredContent.startsWith("http://") ||
+                enteredContent.startsWith("https://")
+            ) {
+                return enteredContent;
+            }
+
+            return "https://" + enteredContent;
+        }
+
+        if (selectedType === "facebook") {
+            if (
+                enteredContent.startsWith("http://") ||
+                enteredContent.startsWith("https://")
+            ) {
+                return enteredContent;
+            }
+
+            return "https://" + enteredContent;
+        }
+
+        if (selectedType === "whatsapp") {
+            const cleanNumber =
+                cleanPhoneNumber(enteredContent)
+                    .replace("+", "")
+                    .replace(/^0/, "44");
+
+            return "https://wa.me/" + cleanNumber;
+        }
+
+        if (selectedType === "email") {
+            return "mailto:" + enteredContent;
+        }
+
+        if (selectedType === "phone") {
+            return "tel:" + cleanPhoneNumber(enteredContent);
+        }
+
+        return enteredContent;
+    }
+
+    function generateQRCode() {
+        const qrContent = buildQRContent();
+
+        const qrContainer =
+            document.getElementById("qrcode");
+
+        const statusMessage =
+            document.getElementById("statusMessage");
+
+        if (!qrContent) {
+            statusMessage.textContent =
+                "Please enter something for your QR code.";
+
+            return;
+        }
+
+        qrContainer.innerHTML = "";
+
+        const size =
+            parseInt(
+                document.getElementById("qrSize").value,
+                10
+            );
+
+        const darkColour =
+            document.getElementById("darkColour").value;
+
+        const lightColour =
+            document.getElementById("lightColour").value;
+
+        currentQRCode = new QRCode(qrContainer, {
+            text: qrContent,
+            width: size,
+            height: size,
+            colorDark: darkColour,
+            colorLight: lightColour,
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        statusMessage.textContent =
+            "Your QR code is ready.";
+    }
+
+    function downloadQRCode() {
+        const qrContainer =
+            document.getElementById("qrcode");
+
+        const canvas =
+            qrContainer.querySelector("canvas");
+
+        const image =
+            qrContainer.querySelector("img");
+
+        let imageAddress = "";
+
+        if (canvas) {
+            imageAddress =
+                canvas.toDataURL("image/png");
+        } else if (image) {
+            imageAddress =
+                image.src;
+        }
+
+        if (!imageAddress) {
+            document.getElementById("statusMessage").textContent =
+                "Generate your QR code before downloading.";
+
+            return;
+        }
+
+        const downloadLink =
+            document.createElement("a");
+
+        downloadLink.href =
+            imageAddress;
+
+        downloadLink.download =
+            "anthony-pugh-media-qr-code.png";
+
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+        downloadLink.remove();
+
+        document.getElementById("statusMessage").textContent =
+            "Your free QR code has downloaded.";
+    }
+
+    document
+        .getElementById("darkColour")
+        .addEventListener(
+            "input",
+            generateQRCode
+        );
+
+    document
+        .getElementById("lightColour")
+        .addEventListener(
+            "input",
+            generateQRCode
+        );
+
+    document
+        .getElementById("qrSize")
+        .addEventListener(
+            "change",
+            generateQRCode
+        );
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+    generateQRCode();
+</script>
+
+</body>
+</html>
