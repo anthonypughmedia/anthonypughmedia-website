@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Free Business Name Generator | Anthony Pugh Media</title>
+
+    <meta
+        name="description"
+        content="Generate creative business name ideas for free. Choose your industry, style and keywords to create memorable company names."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --background: #050b14;
+            --panel: #101d2f;
+            --panel-light: #172840;
+            --primary: #18d39e;
+            --primary-dark: #0fa97e;
+            --text: #ffffff;
+            --muted: #a9b6c9;
+            --border: rgba(255, 255, 255, 0.11);
+            --danger: #ff6b6b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(24, 211, 158, 0.14),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050b14,
+                    #07111f
+                );
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 6%;
+
+            background: rgba(5, 11, 20, 0.9);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .top-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .top-link:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            max-width: 980px;
+            margin: auto;
+            padding: 70px 20px 42px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 9px 16px;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.13);
+            border: 1px solid rgba(24, 211, 158, 0.3);
+            border-radius: 50px;
+
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            margin-bottom: 20px;
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            line-height: 1;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: auto;
+
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        .free-label {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+
+            font-weight: bold;
+        }
+
+        .free-label strong {
+            color: var(--primary);
+        }
+
+        .main-wrap {
+            width: min(1180px, 92%);
+            margin: 0 auto 70px;
+
+            display: grid;
+            grid-template-columns: 390px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .panel {
+            padding: 25px;
+
+            background: rgba(16, 29, 47, 0.96);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .panel h2 {
+            margin-bottom: 8px;
+        }
+
+        .panel-subtitle {
+            margin-bottom: 22px;
+
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px;
+
+            color: #ffffff;
+            background: #091526;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(24, 211, 158, 0.1);
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 16px;
+
+            color: #04120e;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #63f4cb
+            );
+
+            border: 0;
+            border-radius: 13px;
+
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(24, 211, 158, 0.25);
+        }
+
+        .secondary-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 14px;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.08);
+            border: 1px solid rgba(24, 211, 158, 0.3);
+            border-radius: 12px;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(24, 211, 158, 0.14);
+        }
+
+        .small-note {
+            margin-top: 16px;
+            padding: 13px;
+
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            font-size: 0.84rem;
+            line-height: 1.5;
+        }
+
+        .results-panel {
+            min-height: 550px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .results-count {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .names-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .name-card {
+            position: relative;
+            padding: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24, 211, 158, 0.08),
+                    rgba(255, 255, 255, 0.02)
+                );
+
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            transition: 0.2s ease;
+        }
+
+        .name-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(24, 211, 158, 0.45);
+        }
+
+        .business-name {
+            padding-right: 35px;
+
+            color: #ffffff;
+            font-size: 1.23rem;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .name-description {
+            margin-top: 9px;
+
+            color: var(--muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.1);
+            border: 1px solid rgba(24, 211, 158, 0.25);
+            border-radius: 9px;
+
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: rgba(24, 211, 158, 0.2);
+        }
+
+        .favourite-btn {
+            margin-top: 14px;
+            padding: 9px 12px;
+
+            color: var(--muted);
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            cursor: pointer;
+        }
+
+        .favourite-btn.saved {
+            color: #04120e;
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .empty-state {
+            min-height: 390px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 78px;
+            height: 78px;
+            margin-bottom: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.1);
+            border: 1px solid rgba(24, 211, 158, 0.3);
+            border-radius: 50%;
+
+            font-size: 2rem;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .empty-state p {
+            max-width: 470px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .favourites-box {
+            width: min(1180px, 92%);
+            margin: 0 auto 70px;
+            padding: 28px;
+
+            background: rgba(16, 29, 47, 0.96);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+        }
+
+        .favourites-box h2 {
+            margin-bottom: 8px;
+        }
+
+        .favourites-box > p {
+            margin-bottom: 20px;
+            color: var(--muted);
+        }
+
+        .favourite-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .favourite-name {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 11px 13px;
+
+            background: rgba(24, 211, 158, 0.08);
+            border: 1px solid rgba(24, 211, 158, 0.25);
+            border-radius: 11px;
+        }
+
+        .favourite-name button {
+            color: var(--danger);
+            background: none;
+            border: 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .promo {
+            width: min(1120px, 92%);
+            margin: 0 auto 70px;
+            padding: 38px;
+
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 25px;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24, 211, 158, 0.18),
+                    rgba(24, 211, 158, 0.03)
+                ),
+                var(--panel);
+
+            border: 1px solid rgba(24, 211, 158, 0.25);
+            border-radius: 24px;
+        }
+
+        .promo h2 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .promo p {
+            max-width: 700px;
+
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .promo-btn {
+            padding: 16px 22px;
+
+            color: #04120e;
+            background: var(--primary);
+            border-radius: 12px;
+
+            text-decoration: none;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        footer {
+            padding: 30px 20px;
+
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+        }
+
+        .status-message {
+            min-height: 23px;
+            margin-top: 12px;
+
+            color: var(--primary);
+            font-size: 0.88rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        @media (max-width: 850px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .promo {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-link {
+                display: none;
+            }
+
+            .names-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .promo {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        ANTHONY PUGH <span>MEDIA</span>
+    </div>
+
+    <a
+        class="top-link"
+        href="https://anthonypughmedia.co.uk"
+    >
+        Visit our main website
+    </a>
+
+</header>
+
+<section class="hero">
+
+    <div class="badge">
+        Free business tool
+    </div>
+
+    <h1>
+        Free <span>Business Name Generator</span>
+    </h1>
+
+    <p>
+        Generate memorable business name ideas using your industry,
+        preferred style and chosen keywords. Save your favourites and
+        copy the best names instantly.
+    </p>
+
+    <div class="free-label">
+        Unlimited business names: <strong>100% FREE</strong>
+    </div>
+
+</section>
+
+<main class="main-wrap">
+
+    <section class="panel">
+
+        <h2>Create your business names</h2>
+
+        <p class="panel-subtitle">
+            Tell us a little about your new business.
+        </p>
+
+        <div class="field">
+
+            <label for="keyword">
+                Main keyword or idea
+            </label>
+
+            <input
+                id="keyword"
+                type="text"
+                placeholder="Example: green, rapid, Pugh or local"
+                maxlength="30"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label for="industry">
+                Business industry
+            </label>
+
+            <select id="industry">
+
+                <option value="general">
+                    General business
+                </option>
+
+                <option value="gardening">
+                    Gardening and landscaping
+                </option>
+
+                <option value="building">
+                    Building and construction
+                </option>
+
+                <option value="cleaning">
+                    Cleaning services
+                </option>
+
+                <option value="beauty">
+                    Beauty and hair
+                </option>
+
+                <option value="food">
+                    Food and catering
+                </option>
+
+                <option value="technology">
+                    Technology and digital
+                </option>
+
+                <option value="fitness">
+                    Fitness and wellbeing
+                </option>
+
+                <option value="photography">
+                    Photography and media
+                </option>
+
+                <option value="property">
+                    Property and accommodation
+                </option>
+
+                <option value="transport">
+                    Transport and delivery
+                </option>
+
+                <option value="pets">
+                    Pets and animal services
+                </option>
+
+                <option value="retail">
+                    Retail and products
+                </option>
+
+                <option value="education">
+                    Education and training
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label for="style">
+                Name style
+            </label>
+
+            <select id="style">
+
+                <option value="modern">
+                    Modern and professional
+                </option>
+
+                <option value="friendly">
+                    Friendly and local
+                </option>
+
+                <option value="premium">
+                    Premium and luxurious
+                </option>
+
+                <option value="bold">
+                    Bold and powerful
+                </option>
+
+                <option value="simple">
+                    Simple and clear
+                </option>
+
+                <option value="creative">
+                    Creative and unusual
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label for="nameLength">
+                Preferred name length
+            </label>
+
+            <select id="nameLength">
+
+                <option value="short">
+                    Short
+                </option>
+
+                <option value="medium" selected>
+                    Medium
+                </option>
+
+                <option value="long">
+                    Descriptive
+                </option>
+
+            </select>
+
+        </div>
+
+        <button
+            class="generate-btn"
+            type="button"
+            onclick="generateNames()"
+        >
+            Generate Business Names
+        </button>
+
+        <button
+            class="secondary-btn"
+            type="button"
+            onclick="surpriseMe()"
+        >
+            Surprise Me
+        </button>
+
+        <div
+            class="status-message"
+            id="statusMessage"
+        ></div>
+
+        <div class="small-note">
+            Before using a name, check Companies House, trademarks,
+            domain availability and social media usernames. Generating a
+            name here does not guarantee that it is available to use.
+        </div>
+
+    </section>
+
+    <section class="panel results-panel">
+
+        <div class="results-header">
+
+            <div>
+                <h2>Your business name ideas</h2>
+
+                <p class="results-count" id="resultsCount">
+                    Enter your details and generate some names.
+                </p>
+            </div>
+
+        </div>
+
+        <div id="resultsArea">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Your new business name starts here
+                </h3>
+
+                <p>
+                    Add a keyword, choose your industry and style,
+                    then press the generate button to receive a selection
+                    of business name ideas.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<section class="favourites-box">
+
+    <h2>Saved favourites</h2>
+
+    <p>
+        Your selected names will appear here while you use this page.
+    </p>
+
+    <div
+        class="favourite-list"
+        id="favouriteList"
+    >
+        <span style="color:#a9b6c9;">
+            No favourites saved yet.
+        </span>
+    </div>
+
+</section>
+
+<section class="promo">
+
+    <div>
+
+        <h2>
+            Found the perfect business name?
+        </h2>
+
+        <p>
+            Anthony Pugh Media can turn your new idea into a professional
+            business website, complete with contact buttons, social media
+            links and personal support from Anthony and Tami.
+        </p>
+
+    </div>
+
+    <a
+        class="promo-btn"
+        href="https://wa.me/447386739451?text=Hello%20Anthony%20and%20Tami%2C%20I%20used%20your%20free%20business%20name%20generator%20and%20would%20like%20to%20ask%20about%20a%20website."
+        target="_blank"
+        rel="noopener"
+    >
+        Message on WhatsApp
+    </a>
+
+</section>
+
+<footer>
+    © <span id="year"></span>
+    Anthony Pugh Media · Affordable websites and digital support
+</footer>
+
+<script>
+    const industryWords = {
+        general: [
+            "Solutions",
+            "Services",
+            "Group",
+            "Works",
+            "Company",
+            "Collective",
+            "Partners",
+            "Hub"
+        ],
+
+        gardening: [
+            "Gardens",
+            "Landscapes",
+            "Lawn Care",
+            "Grounds",
+            "Outdoor",
+            "Green Spaces",
+            "Garden Works",
+            "Turf"
+        ],
+
+        building: [
+            "Build",
+            "Construction",
+            "Developments",
+            "Property Services",
+            "Projects",
+            "Renovations",
+            "Trades",
+            "Building Solutions"
+        ],
+
+        cleaning: [
+            "Cleaning",
+            "Clean",
+            "Sparkle",
+            "Shine",
+            "Fresh",
+            "Hygiene",
+            "Cleaning Services",
+            "Property Care"
+        ],
+
+        beauty: [
+            "Beauty",
+            "Hair",
+            "Glow",
+            "Studio",
+            "Aesthetics",
+            "Lounge",
+            "Salon",
+            "Beauty House"
+        ],
+
+        food: [
+            "Kitchen",
+            "Catering",
+            "Bites",
+            "Table",
+            "Flavours",
+            "Feast",
+            "Food Company",
+            "Eatery"
+        ],
+
+        technology: [
+            "Digital",
+            "Tech",
+            "Systems",
+            "Labs",
+            "Media",
+            "Online",
+            "Creative",
+            "Technology"
+        ],
+
+        fitness: [
+            "Fitness",
+            "Strength",
+            "Wellness",
+            "Active",
+            "Training",
+            "Performance",
+            "Health",
+            "Movement"
+        ],
+
+        photography: [
+            "Media",
+            "Photography",
+            "Creative",
+            "Studios",
+            "Visuals",
+            "Productions",
+            "Capture",
+            "Films"
+        ],
+
+        property: [
+            "Property",
+            "Homes",
+            "Stays",
+            "Accommodation",
+            "Living",
+            "Retreats",
+            "Property Group",
+            "Lettings"
+        ],
+
+        transport: [
+            "Transport",
+            "Logistics",
+            "Delivery",
+            "Express",
+            "Haulage",
+            "Couriers",
+            "Fleet",
+            "Distribution"
+        ],
+
+        pets: [
+            "Pets",
+            "Paws",
+            "Pet Care",
+            "Canine",
+            "Animal Care",
+            "Walks",
+            "Pet Services",
+            "Companions"
+        ],
+
+        retail: [
+            "Store",
+            "Shop",
+            "Trading",
+            "Market",
+            "Goods",
+            "Products",
+            "Boutique",
+            "Supply"
+        ],
+
+        education: [
+            "Academy",
+            "Learning",
+            "Training",
+            "Education",
+            "Skills",
+            "Tutoring",
+            "Development",
+            "Courses"
+        ]
+    };
+
+    const stylePrefixes = {
+        modern: [
+            "Nova",
+            "Nexa",
+            "Vertex",
+            "Urban",
+            "Core",
+            "Elevate",
+            "Prime",
+            "Forward",
+            "Bright",
+            "Modern"
+        ],
+
+        friendly: [
+            "Happy",
+            "Friendly",
+            "Local",
+            "Neighbourhood",
+            "Little",
+            "Honest",
+            "Welcome",
+            "Sunny",
+            "Home",
+            "Community"
+        ],
+
+        premium: [
+            "Prestige",
+            "Elite",
+            "Signature",
+            "Royal",
+            "Platinum",
+            "Luxury",
+            "Imperial",
+            "Premier",
+            "Grand",
+            "Exclusive"
+        ],
+
+        bold: [
+            "Titan",
+            "Power",
+            "Mighty",
+            "Iron",
+            "Storm",
+            "Force",
+            "Impact",
+            "Rocket",
+            "Champion",
+            "Alpha"
+        ],
+
+        simple: [
+            "Direct",
+            "Clear",
+            "Smart",
+            "Easy",
+            "First",
+            "Simply",
+            "True",
+            "Pure",
+            "Fresh",
+            "Right"
+        ],
+
+        creative: [
+            "Wild",
+            "Pixel",
+            "Moon",
+            "Copper",
+            "Blue",
+            "Mint",
+            "Fox",
+            "Rocket",
+            "Clever",
+            "Wonder"
+        ]
+    };
+
+    const styleSuffixes = {
+        modern: [
+            "Co",
+            "HQ",
+            "Works",
+            "Collective",
+            "Studio",
+            "Lab",
+            "Group",
+            "Solutions"
+        ],
+
+        friendly: [
+            "and Co",
+            "Family",
+            "Team",
+            "Corner",
+            "Company",
+            "Community",
+            "Friends",
+            "Collective"
+        ],
+
+        premium: [
+            "London",
+            "Collection",
+            "Group",
+            "House",
+            "Signature",
+            "Boutique",
+            "Partners",
+            "International"
+        ],
+
+        bold: [
+            "Force",
+            "Pro",
+            "Masters",
+            "Power",
+            "Elite",
+            "Crew",
+            "Experts",
+            "Nation"
+        ],
+
+        simple: [
+            "Services",
+            "Company",
+            "Solutions",
+            "Direct",
+            "UK",
+            "Online",
+            "Group",
+            "Team"
+        ],
+
+        creative: [
+            "Studio",
+            "Collective",
+            "House",
+            "Works",
+            "Club",
+            "Lab",
+            "Factory",
+            "Project"
+        ]
+    };
+
+    const descriptions = {
+        modern:
+            "A clean and modern name suitable for a growing professional brand.",
+
+        friendly:
+            "A welcoming name designed to feel local, personal and trustworthy.",
+
+        premium:
+            "A more luxurious name suited to a high-quality or premium service.",
+
+        bold:
+            "A strong and memorable name designed to make an immediate impact.",
+
+        simple:
+            "A clear business name that quickly explains a professional service.",
+
+        creative:
+            "A distinctive name with a more original and creative personality."
+    };
+
+    let favourites = [];
+
+    function randomItem(array) {
+        return array[
+            Math.floor(Math.random() * array.length)
+        ];
+    }
+
+    function titleCase(value) {
+        return value
+            .toLowerCase()
+            .split(" ")
+            .filter(Boolean)
+            .map(word =>
+                word.charAt(0).toUpperCase() +
+                word.slice(1)
+            )
+            .join(" ");
+    }
+
+    function removeDuplicates(array) {
+        return [...new Set(array)];
+    }
+
+    function createNameIdeas(
+        keyword,
+        industry,
+        style,
+        length
+    ) {
+        const industryList =
+            industryWords[industry];
+
+        const prefixes =
+            stylePrefixes[style];
+
+        const suffixes =
+            styleSuffixes[style];
+
+        const word =
+            keyword
+                ? titleCase(keyword)
+                : randomItem(prefixes);
+
+        let names = [];
+
+        names.push(
+            `${word} ${randomItem(industryList)}`
+        );
+
+        names.push(
+            `${randomItem(prefixes)} ${randomItem(industryList)}`
+        );
+
+        names.push(
+            `${word} ${randomItem(suffixes)}`
+        );
+
+        names.push(
+            `${randomItem(prefixes)} ${word}`
+        );
+
+        names.push(
+            `${word} & ${randomItem(industryList)}`
+        );
+
+        names.push(
+            `${randomItem(prefixes)} ${word} ${randomItem(industryList)}`
+        );
+
+        names.push(
+            `The ${word} ${randomItem(industryList)}`
+        );
+
+        names.push(
+            `${word} ${randomItem(industryList)} ${randomItem(suffixes)}`
+        );
+
+        names.push(
+            `${randomItem(prefixes)} ${randomItem(suffixes)}`
+        );
+
+        names.push(
+            `${word} ${randomItem(prefixes)}`
+        );
+
+        names.push(
+            `${randomItem(prefixes)} ${randomItem(industryList)} ${randomItem(suffixes)}`
+        );
+
+        names.push(
+            `${word} Professional ${randomItem(industryList)}`
+        );
+
+        names = removeDuplicates(names);
+
+        if (length === "short") {
+            names = names
+                .map(name => name.split(" ").slice(0, 2).join(" "))
+                .filter(name => name.length <= 22);
+        }
+
+        if (length === "medium") {
+            names = names
+                .map(name => name.split(" ").slice(0, 3).join(" "));
+        }
+
+        if (length === "long") {
+            names.push(
+                `${word} Professional ${randomItem(industryList)} Services`
+            );
+
+            names.push(
+                `${randomItem(prefixes)} ${word} ${randomItem(industryList)} Solutions`
+            );
+        }
+
+        return removeDuplicates(names).slice(0, 10);
+    }
+
+    function generateNames() {
+        const keyword =
+            document
+                .getElementById("keyword")
+                .value
+                .trim();
+
+        const industry =
+            document
+                .getElementById("industry")
+                .value;
+
+        const style =
+            document
+                .getElementById("style")
+                .value;
+
+        const length =
+            document
+                .getElementById("nameLength")
+                .value;
+
+        const names =
+            createNameIdeas(
+                keyword,
+                industry,
+                style,
+                length
+            );
+
+        displayNames(names, style);
+
+        document
+            .getElementById("statusMessage")
+            .textContent =
+            "Your business name ideas are ready.";
+    }
+
+    function displayNames(names, style) {
+        const resultsArea =
+            document.getElementById("resultsArea");
+
+        resultsArea.innerHTML =
+            "";
+
+        const grid =
+            document.createElement("div");
+
+        grid.className =
+            "names-grid";
+
+        names.forEach(name => {
+            const card =
+                document.createElement("article");
+
+            card.className =
+                "name-card";
+
+            const safeName =
+                escapeHTML(name);
+
+            card.innerHTML = `
+                <button
+                    class="copy-btn"
+                    type="button"
+                    title="Copy business name"
+                    onclick="copyName('${escapeForAttribute(name)}')"
+                >
+                    ⧉
+                </button>
+
+                <div class="business-name">
+                    ${safeName}
+                </div>
+
+                <div class="name-description">
+                    ${descriptions[style]}
+                </div>
+
+                <button
+                    class="favourite-btn ${
+                        favourites.includes(name)
+                            ? "saved"
+                            : ""
+                    }"
+                    type="button"
+                    onclick="toggleFavourite(
+                        '${escapeForAttribute(name)}',
+                        this
+                    )"
+                >
+                    ${
+                        favourites.includes(name)
+                            ? "★ Saved"
+                            : "☆ Save Favourite"
+                    }
+                </button>
+            `;
+
+            grid.appendChild(card);
+        });
+
+        resultsArea.appendChild(grid);
+
+        document
+            .getElementById("resultsCount")
+            .textContent =
+            `${names.length} business name ideas generated.`;
+    }
+
+    function copyName(name) {
+        navigator.clipboard
+            .writeText(name)
+            .then(() => {
+                document
+                    .getElementById("statusMessage")
+                    .textContent =
+                    `"${name}" copied to your clipboard.`;
+            })
+            .catch(() => {
+                document
+                    .getElementById("statusMessage")
+                    .textContent =
+                    "Press and hold the name to copy it.";
+            });
+    }
+
+    function toggleFavourite(name, button) {
+        if (favourites.includes(name)) {
+            favourites =
+                favourites.filter(
+                    favourite => favourite !== name
+                );
+
+            button.classList.remove("saved");
+            button.textContent =
+                "☆ Save Favourite";
+        } else {
+            favourites.push(name);
+
+            button.classList.add("saved");
+            button.textContent =
+                "★ Saved";
+        }
+
+        updateFavouriteList();
+    }
+
+    function removeFavourite(name) {
+        favourites =
+            favourites.filter(
+                favourite => favourite !== name
+            );
+
+        updateFavouriteList();
+        generateNames();
+    }
+
+    function updateFavouriteList() {
+        const favouriteList =
+            document.getElementById(
+                "favouriteList"
+            );
+
+        favouriteList.innerHTML =
+            "";
+
+        if (favourites.length === 0) {
+            favouriteList.innerHTML = `
+                <span style="color:#a9b6c9;">
+                    No favourites saved yet.
+                </span>
+            `;
+
+            return;
+        }
+
+        favourites.forEach(name => {
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "favourite-name";
+
+            item.innerHTML = `
+                <span>${escapeHTML(name)}</span>
+
+                <button
+                    type="button"
+                    title="Remove favourite"
+                    onclick="removeFavourite(
+                        '${escapeForAttribute(name)}'
+                    )"
+                >
+                    ×
+                </button>
+            `;
+
+            favouriteList.appendChild(item);
+        });
+    }
+
+    function surpriseMe() {
+        const industries =
+            Object.keys(industryWords);
+
+        const styles =
+            Object.keys(stylePrefixes);
+
+        const randomKeywords = [
+            "Bright",
+            "Oak",
+            "Local",
+            "Swift",
+            "Green",
+            "Blue",
+            "Smart",
+            "Golden",
+            "Peak",
+            "True",
+            "Urban",
+            "Fresh"
+        ];
+
+        document.getElementById("keyword").value =
+            randomItem(randomKeywords);
+
+        document.getElementById("industry").value =
+            randomItem(industries);
+
+        document.getElementById("style").value =
+            randomItem(styles);
+
+        generateNames();
+    }
+
+    function escapeHTML(value) {
+        return String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function escapeForAttribute(value) {
+        return String(value)
+            .replaceAll("\\", "\\\\")
+            .replaceAll("'", "\\'")
+            .replaceAll('"', "&quot;");
+    }
+
+    document
+        .getElementById("keyword")
+        .addEventListener(
+            "keydown",
+            event => {
+                if (event.key === "Enter") {
+                    generateNames();
+                }
+            }
+        );
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
