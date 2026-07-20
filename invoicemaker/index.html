@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Free Invoice Maker | Anthony Pugh Media</title>
+
+    <meta
+        name="description"
+        content="Create, calculate, print and download a professional business invoice for free with Anthony Pugh Media."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --background: #050b14;
+            --panel: #101d2f;
+            --panel-light: #172840;
+            --primary: #18d39e;
+            --primary-dark: #0fa97e;
+            --text: #ffffff;
+            --muted: #a9b6c9;
+            --border: rgba(255, 255, 255, 0.11);
+            --danger: #ff6b6b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(24, 211, 158, 0.14),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050b14,
+                    #07111f
+                );
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 6%;
+
+            background: rgba(5, 11, 20, 0.9);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .top-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .top-link:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            max-width: 950px;
+            margin: auto;
+            padding: 68px 20px 40px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 9px 16px;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.13);
+            border: 1px solid rgba(24, 211, 158, 0.3);
+            border-radius: 50px;
+
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            margin-bottom: 20px;
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            line-height: 1;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        .free-label {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+
+            font-weight: bold;
+        }
+
+        .free-label strong {
+            color: var(--primary);
+        }
+
+        .main-wrap {
+            width: min(1450px, 95%);
+            margin: 0 auto 70px;
+
+            display: grid;
+            grid-template-columns: 440px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .panel {
+            padding: 24px;
+
+            background: rgba(16, 29, 47, 0.96);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .panel h2 {
+            margin-bottom: 8px;
+        }
+
+        .panel-subtitle {
+            margin-bottom: 22px;
+
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            margin: 25px 0 14px;
+            padding-bottom: 8px;
+
+            color: var(--primary);
+            border-bottom: 1px solid var(--border);
+
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+
+            font-size: 0.88rem;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 13px;
+
+            color: #ffffff;
+            background: #091526;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(24, 211, 158, 0.1);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin: 15px 0;
+            padding: 13px;
+
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 11px;
+        }
+
+        .checkbox-row input {
+            width: auto;
+            transform: scale(1.2);
+        }
+
+        .checkbox-row label {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .item-editor {
+            margin-bottom: 14px;
+            padding: 14px;
+
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+        }
+
+        .item-editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 90px 110px;
+            gap: 9px;
+        }
+
+        .remove-item {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+
+            color: #ffffff;
+            background: rgba(255, 107, 107, 0.15);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            border-radius: 9px;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .remove-item:hover {
+            background: rgba(255, 107, 107, 0.25);
+        }
+
+        .add-item-btn,
+        .print-btn {
+            width: 100%;
+            padding: 15px;
+
+            border: 0;
+            border-radius: 12px;
+
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .add-item-btn {
+            margin-top: 5px;
+
+            color: var(--primary);
+            background: rgba(24, 211, 158, 0.1);
+            border: 1px solid rgba(24, 211, 158, 0.35);
+        }
+
+        .print-btn {
+            margin-top: 18px;
+
+            color: #04120e;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #63f4cb
+            );
+        }
+
+        .add-item-btn:hover,
+        .print-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .small-note {
+            margin-top: 15px;
+            padding: 13px;
+
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 11px;
+
+            font-size: 0.83rem;
+            line-height: 1.5;
+        }
+
+        .invoice-preview-panel {
+            overflow: auto;
+        }
+
+        .preview-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .preview-heading p {
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .invoice-page {
+            width: 100%;
+            max-width: 900px;
+            min-height: 1050px;
+            margin: auto;
+            padding: 50px;
+
+            color: #17202a;
+            background: #ffffff;
+            border-radius: 5px;
+
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.28);
+        }
+
+        .invoice-top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 25px;
+
+            padding-bottom: 25px;
+            border-bottom: 4px solid #18d39e;
+        }
+
+        .invoice-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .invoice-logo {
+            display: none;
+            width: 88px;
+            height: 88px;
+            object-fit: contain;
+        }
+
+        .invoice-business-name {
+            color: #101820;
+            font-size: 1.65rem;
+            font-weight: 900;
+        }
+
+        .invoice-business-contact {
+            margin-top: 8px;
+
+            color: #59636e;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            white-space: pre-line;
+        }
+
+        .invoice-title-area {
+            text-align: right;
+        }
+
+        .invoice-title {
+            color: #18a77f;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .invoice-meta {
+            margin-top: 12px;
+
+            color: #4f5964;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .invoice-meta strong {
+            color: #17202a;
+        }
+
+        .address-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+
+            margin: 35px 0;
+        }
+
+        .address-block h3 {
+            margin-bottom: 10px;
+
+            color: #18a77f;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        .address-block p {
+            color: #4f5964;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .customer-name-preview {
+            color: #17202a !important;
+            font-weight: bold;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        .invoice-table th {
+            padding: 13px 11px;
+
+            color: #ffffff;
+            background: #102033;
+
+            font-size: 0.82rem;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .invoice-table td {
+            padding: 14px 11px;
+
+            border-bottom: 1px solid #e4e8eb;
+
+            color: #47515c;
+            vertical-align: top;
+        }
+
+        .invoice-table .number-cell {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .totals-wrap {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+
+        .totals-table {
+            width: min(360px, 100%);
+            border-collapse: collapse;
+        }
+
+        .totals-table td {
+            padding: 10px 8px;
+            color: #4f5964;
+        }
+
+        .totals-table td:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .grand-total td {
+            padding-top: 15px;
+
+            color: #17202a;
+            border-top: 3px solid #18d39e;
+
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        .invoice-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+
+            margin-top: 45px;
+        }
+
+        .bottom-box {
+            padding: 18px;
+
+            background: #f4f7f8;
+            border-radius: 8px;
+        }
+
+        .bottom-box h3 {
+            margin-bottom: 10px;
+
+            color: #18a77f;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+        }
+
+        .bottom-box p {
+            color: #59636e;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .invoice-footer-message {
+            margin-top: 45px;
+            padding-top: 18px;
+
+            color: #7b858f;
+            border-top: 1px solid #e1e5e8;
+
+            text-align: center;
+            font-size: 0.82rem;
+        }
+
+        .promo {
+            width: min(1120px, 92%);
+            margin: 0 auto 70px;
+            padding: 38px;
+
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 25px;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24, 211, 158, 0.18),
+                    rgba(24, 211, 158, 0.03)
+                ),
+                var(--panel);
+
+            border: 1px solid rgba(24, 211, 158, 0.25);
+            border-radius: 24px;
+        }
+
+        .promo h2 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .promo p {
+            max-width: 700px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .promo-btn {
+            padding: 16px 22px;
+
+            color: #04120e;
+            background: var(--primary);
+            border-radius: 12px;
+
+            text-decoration: none;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        footer {
+            padding: 30px 20px;
+
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+        }
+
+        @media (max-width: 1050px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .two-column,
+            .item-editor-grid,
+            .address-grid,
+            .invoice-bottom,
+            .promo {
+                grid-template-columns: 1fr;
+            }
+
+            .top-link {
+                display: none;
+            }
+
+            .invoice-page {
+                min-width: 730px;
+            }
+
+            .invoice-preview-panel {
+                padding: 12px;
+            }
+
+            .promo {
+                text-align: center;
+            }
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+            }
+
+            .topbar,
+            .hero,
+            .editor-panel,
+            .preview-heading,
+            .promo,
+            footer {
+                display: none !important;
+            }
+
+            .main-wrap {
+                display: block;
+                width: 100%;
+                margin: 0;
+            }
+
+            .invoice-preview-panel {
+                padding: 0;
+                background: #ffffff;
+                border: 0;
+                box-shadow: none;
+            }
+
+            .invoice-page {
+                width: 100%;
+                max-width: none;
+                min-width: 0;
+                min-height: 0;
+                padding: 25px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            @page {
+                size: A4;
+                margin: 8mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        ANTHONY PUGH <span>MEDIA</span>
+    </div>
+
+    <a
+        class="top-link"
+        href="https://anthonypughmedia.co.uk"
+    >
+        Visit our main website
+    </a>
+</header>
+
+<section class="hero">
+    <div class="badge">
+        Free business tool
+    </div>
+
+    <h1>
+        Free <span>Invoice Maker</span>
+    </h1>
+
+    <p>
+        Create a clean professional invoice, calculate the totals
+        automatically and print or save it as a PDF. No account,
+        subscription or payment required.
+    </p>
+
+    <div class="free-label">
+        Create and download: <strong>100% FREE</strong>
+    </div>
+</section>
+
+<main class="main-wrap">
+
+    <section class="panel editor-panel">
+
+        <h2>Invoice details</h2>
+
+        <p class="panel-subtitle">
+            Enter your information and the invoice will update automatically.
+        </p>
+
+        <div class="section-title">Your business</div>
+
+        <div class="field">
+            <label for="logoUpload">Business logo — optional</label>
+            <input
+                id="logoUpload"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+            >
+        </div>
+
+        <div class="field">
+            <label for="businessName">Business name</label>
+            <input
+                id="businessName"
+                type="text"
+                value="Your Business Name"
+            >
+        </div>
+
+        <div class="field">
+            <label for="businessAddress">Business address</label>
+            <textarea id="businessAddress">Business address
+Town or city
+Postcode</textarea>
+        </div>
+
+        <div class="two-column">
+            <div class="field">
+                <label for="businessEmail">Email</label>
+                <input
+                    id="businessEmail"
+                    type="email"
+                    value="hello@example.co.uk"
+                >
+            </div>
+
+            <div class="field">
+                <label for="businessPhone">Telephone</label>
+                <input
+                    id="businessPhone"
+                    type="text"
+                    value="07123 456789"
+                >
+            </div>
+        </div>
+
+        <div class="section-title">Customer</div>
+
+        <div class="field">
+            <label for="customerName">Customer or company name</label>
+            <input
+                id="customerName"
+                type="text"
+                value="Customer Name"
+            >
+        </div>
+
+        <div class="field">
+            <label for="customerAddress">Customer address</label>
+            <textarea id="customerAddress">Customer address
+Town or city
+Postcode</textarea>
+        </div>
+
+        <div class="section-title">Invoice information</div>
+
+        <div class="two-column">
+            <div class="field">
+                <label for="invoiceNumber">Invoice number</label>
+                <input
+                    id="invoiceNumber"
+                    type="text"
+                    value="INV-001"
+                >
+            </div>
+
+            <div class="field">
+                <label for="currency">Currency</label>
+
+                <select id="currency">
+                    <option value="£">GBP — £</option>
+                    <option value="€">EUR — €</option>
+                    <option value="$">USD — $</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="two-column">
+            <div class="field">
+                <label for="invoiceDate">Invoice date</label>
+                <input id="invoiceDate" type="date">
+            </div>
+
+            <div class="field">
+                <label for="dueDate">Payment due</label>
+                <input id="dueDate" type="date">
+            </div>
+        </div>
+
+        <div class="section-title">Items or services</div>
+
+        <div id="itemEditors"></div>
+
+        <button
+            class="add-item-btn"
+            type="button"
+            onclick="addItem()"
+        >
+            + Add Another Item
+        </button>
+
+        <div class="section-title">Tax and discount</div>
+
+        <div class="checkbox-row">
+            <input id="vatEnabled" type="checkbox">
+
+            <label for="vatEnabled">
+                Add VAT or sales tax
+            </label>
+        </div>
+
+        <div
+            class="two-column"
+            id="vatOptions"
+            style="display:none;"
+        >
+            <div class="field">
+                <label for="vatLabel">Tax name</label>
+                <input
+                    id="vatLabel"
+                    type="text"
+                    value="VAT"
+                >
+            </div>
+
+            <div class="field">
+                <label for="vatRate">Tax rate %</label>
+                <input
+                    id="vatRate"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="20"
+                >
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="discount">Discount amount</label>
+            <input
+                id="discount"
+                type="number"
+                min="0"
+                step="0.01"
+                value="0"
+            >
+        </div>
+
+        <div class="section-title">Payment and notes</div>
+
+        <div class="field">
+            <label for="paymentDetails">Payment details</label>
+            <textarea id="paymentDetails">Bank: Your Bank
+Account name: Your Business
+Sort code: 00-00-00
+Account number: 00000000</textarea>
+        </div>
+
+        <div class="field">
+            <label for="invoiceNotes">Notes</label>
+            <textarea id="invoiceNotes">Thank you for your business. Please use the invoice number as your payment reference.</textarea>
+        </div>
+
+        <button
+            class="print-btn"
+            type="button"
+            onclick="printInvoice()"
+        >
+            Print or Save as PDF
+        </button>
+
+        <div class="small-note">
+            On the print screen, choose “Save as PDF” to download the
+            invoice. Check that the information and any VAT details are
+            correct before sending it to your customer.
+        </div>
+
+    </section>
+
+    <section class="panel invoice-preview-panel">
+
+        <div class="preview-heading">
+            <div>
+                <h2>Invoice preview</h2>
+                <p>Your invoice updates as you type.</p>
+            </div>
+        </div>
+
+        <article class="invoice-page" id="invoicePage">
+
+            <div class="invoice-top">
+
+                <div class="invoice-logo-wrap">
+
+                    <img
+                        id="invoiceLogo"
+                        class="invoice-logo"
+                        alt="Business logo"
+                    >
+
+                    <div>
+                        <div
+                            class="invoice-business-name"
+                            id="previewBusinessName"
+                        >
+                            Your Business Name
+                        </div>
+
+                        <div
+                            class="invoice-business-contact"
+                            id="previewBusinessContact"
+                        ></div>
+                    </div>
+
+                </div>
+
+                <div class="invoice-title-area">
+
+                    <div class="invoice-title">
+                        INVOICE
+                    </div>
+
+                    <div class="invoice-meta">
+                        <div>
+                            <strong>Invoice:</strong>
+                            <span id="previewInvoiceNumber"></span>
+                        </div>
+
+                        <div>
+                            <strong>Date:</strong>
+                            <span id="previewInvoiceDate"></span>
+                        </div>
+
+                        <div>
+                            <strong>Due:</strong>
+                            <span id="previewDueDate"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="address-grid">
+
+                <div class="address-block">
+                    <h3>From</h3>
+
+                    <p
+                        id="previewFromAddress"
+                    ></p>
+                </div>
+
+                <div class="address-block">
+                    <h3>Bill to</h3>
+
+                    <p
+                        class="customer-name-preview"
+                        id="previewCustomerName"
+                    ></p>
+
+                    <p
+                        id="previewCustomerAddress"
+                    ></p>
+                </div>
+
+            </div>
+
+            <table class="invoice-table">
+
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th class="number-cell">Quantity</th>
+                        <th class="number-cell">Price</th>
+                        <th class="number-cell">Total</th>
+                    </tr>
+                </thead>
+
+                <tbody id="previewItems"></tbody>
+
+            </table>
+
+            <div class="totals-wrap">
+
+                <table class="totals-table">
+
+                    <tr>
+                        <td>Subtotal</td>
+                        <td id="previewSubtotal">£0.00</td>
+                    </tr>
+
+                    <tr id="discountRow" style="display:none;">
+                        <td>Discount</td>
+                        <td id="previewDiscount">-£0.00</td>
+                    </tr>
+
+                    <tr id="vatRow" style="display:none;">
+                        <td id="previewVatLabel">VAT</td>
+                        <td id="previewVat">£0.00</td>
+                    </tr>
+
+                    <tr class="grand-total">
+                        <td>Total due</td>
+                        <td id="previewGrandTotal">£0.00</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="invoice-bottom">
+
+                <div class="bottom-box">
+                    <h3>Payment details</h3>
+                    <p id="previewPaymentDetails"></p>
+                </div>
+
+                <div class="bottom-box">
+                    <h3>Notes</h3>
+                    <p id="previewNotes"></p>
+                </div>
+
+            </div>
+
+            <div class="invoice-footer-message">
+                Invoice created using the free Anthony Pugh Media Invoice Maker.
+            </div>
+
+        </article>
+
+    </section>
+
+</main>
+
+<section class="promo">
+
+    <div>
+        <h2>Need a professional business website?</h2>
+
+        <p>
+            Anthony Pugh Media creates affordable websites for trades,
+            small businesses and independent companies, with personal
+            support from Anthony and Tami.
+        </p>
+    </div>
+
+    <a
+        class="promo-btn"
+        href="https://wa.me/447386739451?text=Hello%20Anthony%20and%20Tami%2C%20I%20used%20your%20free%20invoice%20maker%20and%20would%20like%20to%20ask%20about%20a%20website."
+        target="_blank"
+        rel="noopener"
+    >
+        Message on WhatsApp
+    </a>
+
+</section>
+
+<footer>
+    © <span id="year"></span>
+    Anthony Pugh Media · Affordable websites and digital support
+</footer>
+
+<script>
+    let itemCounter = 0;
+
+    function escapeHTML(value) {
+        return String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function getValue(id) {
+        return document.getElementById(id).value.trim();
+    }
+
+    function getNumber(id) {
+        const value = parseFloat(
+            document.getElementById(id).value
+        );
+
+        return Number.isFinite(value) ? value : 0;
+    }
+
+    function formatMoney(amount) {
+        const currency =
+            document.getElementById("currency").value;
+
+        return currency + amount.toFixed(2);
+    }
+
+    function formatDate(dateValue) {
+        if (!dateValue) {
+            return "";
+        }
+
+        const date = new Date(dateValue + "T12:00:00");
+
+        return date.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        });
+    }
+
+    function setDefaultDates() {
+        const today = new Date();
+        const due = new Date();
+
+        due.setDate(today.getDate() + 14);
+
+        document.getElementById("invoiceDate").value =
+            today.toISOString().split("T")[0];
+
+        document.getElementById("dueDate").value =
+            due.toISOString().split("T")[0];
+    }
+
+    function addItem(
+        description = "Website design service",
+        quantity = 1,
+        price = 100
+    ) {
+        itemCounter++;
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className = "item-editor";
+        wrapper.dataset.itemId = itemCounter;
+
+        wrapper.innerHTML = `
+            <div class="item-editor-grid">
+
+                <div class="field">
+                    <label>Description</label>
+
+                    <input
+                        class="item-description"
+                        type="text"
+                        value="${escapeHTML(description)}"
+                    >
+                </div>
+
+                <div class="field">
+                    <label>Quantity</label>
+
+                    <input
+                        class="item-quantity"
+                        type="number"
+                        min="0"
+                        step="1"
+                        value="${quantity}"
+                    >
+                </div>
+
+                <div class="field">
+                    <label>Price</label>
+
+                    <input
+                        class="item-price"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="${price}"
+                    >
+                </div>
+
+            </div>
+
+            <button
+                class="remove-item"
+                type="button"
+                onclick="removeItem(this)"
+            >
+                Remove Item
+            </button>
+        `;
+
+        document
+            .getElementById("itemEditors")
+            .appendChild(wrapper);
+
+        wrapper
+            .querySelectorAll("input")
+            .forEach(input => {
+                input.addEventListener(
+                    "input",
+                    updateInvoice
+                );
+            });
+
+        updateInvoice();
+    }
+
+    function removeItem(button) {
+        const items =
+            document.querySelectorAll(".item-editor");
+
+        if (items.length <= 1) {
+            alert("Your invoice must contain at least one item.");
+            return;
+        }
+
+        button.closest(".item-editor").remove();
+        updateInvoice();
+    }
+
+    function getItems() {
+        return Array
+            .from(
+                document.querySelectorAll(".item-editor")
+            )
+            .map(item => {
+                const description =
+                    item.querySelector(
+                        ".item-description"
+                    ).value.trim() || "Item";
+
+                const quantity =
+                    parseFloat(
+                        item.querySelector(
+                            ".item-quantity"
+                        ).value
+                    ) || 0;
+
+                const price =
+                    parseFloat(
+                        item.querySelector(
+                            ".item-price"
+                        ).value
+                    ) || 0;
+
+                return {
+                    description,
+                    quantity,
+                    price,
+                    total: quantity * price
+                };
+            });
+    }
+
+    function updateInvoice() {
+        const businessName =
+            getValue("businessName") ||
+            "Your Business Name";
+
+        const businessAddress =
+            getValue("businessAddress");
+
+        const businessEmail =
+            getValue("businessEmail");
+
+        const businessPhone =
+            getValue("businessPhone");
+
+        document.getElementById(
+            "previewBusinessName"
+        ).textContent = businessName;
+
+        document.getElementById(
+            "previewBusinessContact"
+        ).textContent =
+            [businessEmail, businessPhone]
+                .filter(Boolean)
+                .join("\n");
+
+        document.getElementById(
+            "previewFromAddress"
+        ).textContent = businessAddress;
+
+        document.getElementById(
+            "previewCustomerName"
+        ).textContent =
+            getValue("customerName") ||
+            "Customer Name";
+
+        document.getElementById(
+            "previewCustomerAddress"
+        ).textContent =
+            getValue("customerAddress");
+
+        document.getElementById(
+            "previewInvoiceNumber"
+        ).textContent =
+            getValue("invoiceNumber");
+
+        document.getElementById(
+            "previewInvoiceDate"
+        ).textContent =
+            formatDate(
+                document.getElementById(
+                    "invoiceDate"
+                ).value
+            );
+
+        document.getElementById(
+            "previewDueDate"
+        ).textContent =
+            formatDate(
+                document.getElementById(
+                    "dueDate"
+                ).value
+            );
+
+        document.getElementById(
+            "previewPaymentDetails"
+        ).textContent =
+            getValue("paymentDetails");
+
+        document.getElementById(
+            "previewNotes"
+        ).textContent =
+            getValue("invoiceNotes");
+
+        const items = getItems();
+        const previewItems =
+            document.getElementById("previewItems");
+
+        previewItems.innerHTML = "";
+
+        let subtotal = 0;
+
+        items.forEach(item => {
+            subtotal += item.total;
+
+            const row =
+                document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${escapeHTML(item.description)}</td>
+
+                <td class="number-cell">
+                    ${item.quantity}
+                </td>
+
+                <td class="number-cell">
+                    ${formatMoney(item.price)}
+                </td>
+
+                <td class="number-cell">
+                    ${formatMoney(item.total)}
+                </td>
+            `;
+
+            previewItems.appendChild(row);
+        });
+
+        const discount =
+            Math.min(
+                getNumber("discount"),
+                subtotal
+            );
+
+        const taxableAmount =
+            Math.max(0, subtotal - discount);
+
+        const vatEnabled =
+            document.getElementById(
+                "vatEnabled"
+            ).checked;
+
+        const vatRate =
+            getNumber("vatRate");
+
+        const vatAmount =
+            vatEnabled
+                ? taxableAmount * (vatRate / 100)
+                : 0;
+
+        const total =
+            taxableAmount + vatAmount;
+
+        document.getElementById(
+            "previewSubtotal"
+        ).textContent =
+            formatMoney(subtotal);
+
+        document.getElementById(
+            "previewDiscount"
+        ).textContent =
+            "-" + formatMoney(discount);
+
+        document.getElementById(
+            "previewVat"
+        ).textContent =
+            formatMoney(vatAmount);
+
+        document.getElementById(
+            "previewGrandTotal"
+        ).textContent =
+            formatMoney(total);
+
+        const discountRow =
+            document.getElementById("discountRow");
+
+        discountRow.style.display =
+            discount > 0
+                ? "table-row"
+                : "none";
+
+        const vatRow =
+            document.getElementById("vatRow");
+
+        vatRow.style.display =
+            vatEnabled
+                ? "table-row"
+                : "none";
+
+        const vatLabel =
+            getValue("vatLabel") || "Tax";
+
+        document.getElementById(
+            "previewVatLabel"
+        ).textContent =
+            `${vatLabel} (${vatRate}%)`;
+    }
+
+    function toggleVatOptions() {
+        const enabled =
+            document.getElementById(
+                "vatEnabled"
+            ).checked;
+
+        document.getElementById(
+            "vatOptions"
+        ).style.display =
+            enabled
+                ? "grid"
+                : "none";
+
+        updateInvoice();
+    }
+
+    function handleLogoUpload(event) {
+        const file =
+            event.target.files[0];
+
+        const preview =
+            document.getElementById(
+                "invoiceLogo"
+            );
+
+        if (!file) {
+            preview.style.display = "none";
+            preview.removeAttribute("src");
+            return;
+        }
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function(loadEvent) {
+            preview.src =
+                loadEvent.target.result;
+
+            preview.style.display =
+                "block";
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    function printInvoice() {
+        updateInvoice();
+
+        setTimeout(() => {
+            window.print();
+        }, 100);
+    }
+
+    document
+        .querySelectorAll(
+            "input, textarea, select"
+        )
+        .forEach(element => {
+            if (
+                element.id !== "logoUpload" &&
+                element.id !== "vatEnabled"
+            ) {
+                element.addEventListener(
+                    "input",
+                    updateInvoice
+                );
+
+                element.addEventListener(
+                    "change",
+                    updateInvoice
+                );
+            }
+        });
+
+    document
+        .getElementById("vatEnabled")
+        .addEventListener(
+            "change",
+            toggleVatOptions
+        );
+
+    document
+        .getElementById("logoUpload")
+        .addEventListener(
+            "change",
+            handleLogoUpload
+        );
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+    setDefaultDates();
+
+    addItem(
+        "Website design service",
+        1,
+        100
+    );
+
+    addItem(
+        "Domain and hosting",
+        1,
+        25
+    );
+
+    updateInvoice();
+</script>
+
+</body>
+</html>
