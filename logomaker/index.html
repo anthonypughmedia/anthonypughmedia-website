@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Logo Maker | Anthony Pugh Media</title>
+
+    <meta
+        name="description"
+        content="Create a professional business logo for free. Download a watermarked preview or purchase the clean logo for only £1.99."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --background: #07111f;
+            --panel: #101d2f;
+            --panel-light: #172840;
+            --primary: #18d39e;
+            --primary-dark: #0fa97e;
+            --text: #ffffff;
+            --muted: #a9b6c9;
+            --border: rgba(255,255,255,0.11);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(24,211,158,0.12), transparent 35%),
+                linear-gradient(135deg, #050b14, var(--background));
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .topbar {
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            background: rgba(5, 11, 20, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: 0.4px;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .top-link {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .top-link:hover {
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px 42px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(24,211,158,0.13);
+            color: var(--primary);
+            border: 1px solid rgba(24,211,158,0.3);
+            padding: 9px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 7vw, 5rem);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 690px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .price-strip {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .price-chip {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            padding: 12px 18px;
+            border-radius: 14px;
+        }
+
+        .price-chip strong {
+            color: var(--primary);
+        }
+
+        .main-wrap {
+            width: min(1180px, 92%);
+            margin: 0 auto 70px;
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .panel {
+            background: rgba(16, 29, 47, 0.94);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 24px;
+            box-shadow: 0 22px 60px rgba(0,0,0,0.25);
+        }
+
+        .panel h2 {
+            margin-bottom: 8px;
+        }
+
+        .panel-subtitle {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin-bottom: 23px;
+        }
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            border: 1px solid var(--border);
+            background: #091526;
+            color: white;
+            padding: 14px;
+            border-radius: 12px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(24,211,158,0.1);
+        }
+
+        .colour-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        input[type="color"] {
+            height: 50px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .generate-btn {
+            border: 0;
+            width: 100%;
+            margin-top: 8px;
+            padding: 16px;
+            border-radius: 13px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #04120e;
+            background: linear-gradient(135deg, var(--primary), #63f4cb);
+            transition: 0.2s ease;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(24,211,158,0.25);
+        }
+
+        .results-panel {
+            min-height: 500px;
+        }
+
+        .results-heading {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .results-heading p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .logo-card {
+            background: white;
+            color: #111;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .canvas-wrap {
+            position: relative;
+            aspect-ratio: 1.6 / 1;
+            background:
+                linear-gradient(45deg, #ececec 25%, transparent 25%),
+                linear-gradient(-45deg, #ececec 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ececec 75%),
+                linear-gradient(-45deg, transparent 75%, #ececec 75%);
+            background-size: 22px 22px;
+            background-position: 0 0, 0 11px, 11px -11px, -11px 0;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .logo-details {
+            padding: 15px;
+        }
+
+        .logo-details h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .button-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+        }
+
+        .download-btn,
+        .buy-btn {
+            border: 0;
+            border-radius: 10px;
+            padding: 12px 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .download-btn {
+            background: #e9edf2;
+            color: #17202a;
+        }
+
+        .buy-btn {
+            background: var(--primary);
+            color: #04120e;
+        }
+
+        .download-btn:hover,
+        .buy-btn:hover {
+            opacity: 0.88;
+        }
+
+        .notice {
+            margin-top: 20px;
+            padding: 14px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+            font-size: 0.88rem;
+        }
+
+        .promo {
+            width: min(1120px, 92%);
+            margin: 0 auto 70px;
+            padding: 38px;
+            border-radius: 24px;
+            background:
+                linear-gradient(135deg, rgba(24,211,158,0.18), rgba(24,211,158,0.03)),
+                var(--panel);
+            border: 1px solid rgba(24,211,158,0.25);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .promo h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .promo p {
+            color: var(--muted);
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .promo-btn {
+            background: var(--primary);
+            color: #04120e;
+            text-decoration: none;
+            padding: 16px 22px;
+            border-radius: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            max-width: 340px;
+            padding: 16px 18px;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #111;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: translateY(150%);
+            opacity: 0;
+            transition: 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .main-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .topbar {
+                padding: 15px 18px;
+            }
+
+            .top-link {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+
+            .button-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">ANTHONY PUGH <span>MEDIA</span></div>
+
+    <a class="top-link" href="https://anthonypughmedia.co.uk">
+        Visit our main website
+    </a>
+</header>
+
+<section class="hero">
+
+    <div class="badge">Simple, fast and affordable branding</div>
+
+    <h1>Create Your <span>Business Logo</span></h1>
+
+    <p>
+        Enter your business details and create a selection of professional
+        logo ideas instantly. Download a free watermarked preview or get the
+        clean version for only £1.99.
+    </p>
+
+    <div class="price-strip">
+        <div class="price-chip">
+            Watermarked preview: <strong>FREE</strong>
+        </div>
+
+        <div class="price-chip">
+            Clean logo: <strong>£1.99</strong>
+        </div>
+    </div>
+
+</section>
+
+<main class="main-wrap">
+
+    <section class="panel">
+
+        <h2>Design your logo</h2>
+
+        <p class="panel-subtitle">
+            Fill in your details and choose the look you want.
+        </p>
+
+        <div class="field">
+            <label for="businessName">Business name</label>
+
+            <input
+                id="businessName"
+                type="text"
+                maxlength="30"
+                value="Greenway Gardens"
+                placeholder="Example: Greenway Gardens"
+            >
+        </div>
+
+        <div class="field">
+            <label for="slogan">Slogan — optional</label>
+
+            <input
+                id="slogan"
+                type="text"
+                maxlength="50"
+                value="Professional Garden Care"
+                placeholder="Example: Quality you can trust"
+            >
+        </div>
+
+        <div class="field">
+            <label for="industry">Business type</label>
+
+            <select id="industry">
+                <option value="garden">Gardening and landscaping</option>
+                <option value="building">Building and construction</option>
+                <option value="plumbing">Plumbing</option>
+                <option value="electrical">Electrical</option>
+                <option value="beauty">Beauty and hair</option>
+                <option value="cleaning">Cleaning</option>
+                <option value="food">Food and catering</option>
+                <option value="fitness">Fitness</option>
+                <option value="transport">Transport and delivery</option>
+                <option value="technology">Technology</option>
+                <option value="property">Property</option>
+                <option value="general">General business</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="style">Logo style</label>
+
+            <select id="style">
+                <option value="modern">Modern</option>
+                <option value="bold">Bold</option>
+                <option value="minimal">Minimal</option>
+                <option value="luxury">Luxury</option>
+                <option value="friendly">Friendly</option>
+            </select>
+        </div>
+
+        <div class="colour-row">
+
+            <div class="field">
+                <label for="primaryColour">Main colour</label>
+                <input id="primaryColour" type="color" value="#167b45">
+            </div>
+
+            <div class="field">
+                <label for="secondaryColour">Second colour</label>
+                <input id="secondaryColour" type="color" value="#f3b61f">
+            </div>
+
+        </div>
+
+        <button class="generate-btn" onclick="generateAllLogos()">
+            Generate My Logos
+        </button>
+
+        <div class="notice">
+            Your logos are created instantly in your browser. Try different
+            colours, styles and business names until you find one you like.
+        </div>
+
+    </section>
+
+    <section class="panel results-panel">
+
+        <div class="results-heading">
+            <div>
+                <h2>Your logo ideas</h2>
+                <p>Select a design to download.</p>
+            </div>
+        </div>
+
+        <div class="logo-grid">
+
+            <article class="logo-card">
+                <div class="canvas-wrap">
+                    <canvas id="logo1" width="1000" height="625"></canvas>
+                </div>
+
+                <div class="logo-details">
+                    <h3>Design One</h3>
+
+                    <div class="button-row">
+                        <button
+                            class="download-btn"
+                            onclick="downloadWatermarked(1)"
+                        >
+                            Free Preview
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="purchaseLogo(1)"
+                        >
+                            Clean Logo £1.99
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="logo-card">
+                <div class="canvas-wrap">
+                    <canvas id="logo2" width="1000" height="625"></canvas>
+                </div>
+
+                <div class="logo-details">
+                    <h3>Design Two</h3>
+
+                    <div class="button-row">
+                        <button
+                            class="download-btn"
+                            onclick="downloadWatermarked(2)"
+                        >
+                            Free Preview
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="purchaseLogo(2)"
+                        >
+                            Clean Logo £1.99
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="logo-card">
+                <div class="canvas-wrap">
+                    <canvas id="logo3" width="1000" height="625"></canvas>
+                </div>
+
+                <div class="logo-details">
+                    <h3>Design Three</h3>
+
+                    <div class="button-row">
+                        <button
+                            class="download-btn"
+                            onclick="downloadWatermarked(3)"
+                        >
+                            Free Preview
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="purchaseLogo(3)"
+                        >
+                            Clean Logo £1.99
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="logo-card">
+                <div class="canvas-wrap">
+                    <canvas id="logo4" width="1000" height="625"></canvas>
+                </div>
+
+                <div class="logo-details">
+                    <h3>Design Four</h3>
+
+                    <div class="button-row">
+                        <button
+                            class="download-btn"
+                            onclick="downloadWatermarked(4)"
+                        >
+                            Free Preview
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="purchaseLogo(4)"
+                        >
+                            Clean Logo £1.99
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+</main>
+
+<section class="promo">
+
+    <div>
+        <h2>Need a website for your new business?</h2>
+
+        <p>
+            Anthony Pugh Media creates affordable professional websites for
+            small businesses, trades and independent companies. Get personal
+            UK support without the huge agency prices.
+        </p>
+    </div>
+
+    <a
+        class="promo-btn"
+        href="https://wa.me/447386739451?text=Hello%20Anthony%20and%20Tami%2C%20I%20have%20used%20your%20logo%20maker%20and%20would%20like%20to%20ask%20about%20a%20website."
+        target="_blank"
+        rel="noopener"
+    >
+        Message on WhatsApp
+    </a>
+
+</section>
+
+<footer>
+    © <span id="year"></span> Anthony Pugh Media · Affordable websites and digital support
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+    const iconCharacters = {
+        garden: "✿",
+        building: "⌂",
+        plumbing: "◉",
+        electrical: "ϟ",
+        beauty: "✦",
+        cleaning: "✧",
+        food: "♨",
+        fitness: "◆",
+        transport: "➜",
+        technology: "⬡",
+        property: "⌂",
+        general: "★"
+    };
+
+    function getFormData() {
+        return {
+            businessName:
+                document.getElementById("businessName").value.trim() ||
+                "Your Business",
+
+            slogan:
+                document.getElementById("slogan").value.trim(),
+
+            industry:
+                document.getElementById("industry").value,
+
+            style:
+                document.getElementById("style").value,
+
+            primary:
+                document.getElementById("primaryColour").value,
+
+            secondary:
+                document.getElementById("secondaryColour").value
+        };
+    }
+
+    function fitText(ctx, text, maxWidth, startingSize, minimumSize = 30) {
+        let fontSize = startingSize;
+
+        while (fontSize > minimumSize) {
+            ctx.font = `800 ${fontSize}px Arial`;
+
+            if (ctx.measureText(text).width <= maxWidth) {
+                return fontSize;
+            }
+
+            fontSize -= 2;
+        }
+
+        return minimumSize;
+    }
+
+    function clearCanvas(ctx, width, height, background = "#ffffff") {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = background;
+        ctx.fillRect(0, 0, width, height);
+    }
+
+    function drawIconCircle(ctx, x, y, radius, colour, icon, textColour) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = colour;
+        ctx.fill();
+
+        ctx.fillStyle = textColour;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.font = `bold ${radius * 1.15}px Arial`;
+        ctx.fillText(icon, x, y + 3);
+    }
+
+    function drawLogo1(canvas, data) {
+        const ctx = canvas.getContext("2d");
+        const width = canvas.width;
+        const height = canvas.height;
+        const icon = iconCharacters[data.industry];
+
+        clearCanvas(ctx, width, height);
+
+        drawIconCircle(
+            ctx,
+            210,
+            height / 2,
+            115,
+            data.primary,
+            icon,
+            "#ffffff"
+        );
+
+        ctx.textAlign = "left";
+        ctx.textBaseline = "alphabetic";
+        ctx.fillStyle = "#15202b";
+
+        const size = fitText(
+            ctx,
+            data.businessName.toUpperCase(),
+            600,
+            data.style === "bold" ? 82 : 70
+        );
+
+        ctx.font = `800 ${size}px Arial`;
+        ctx.fillText(data.businessName.toUpperCase(), 365, 295);
+
+        ctx.fillStyle = data.primary;
+        ctx.fillRect(365, 325, 430, 10);
+
+        if (data.slogan) {
+            ctx.fillStyle = "#56616f";
+            ctx.font = "32px Arial";
+            ctx.fillText(data.slogan, 365, 390);
+        }
+    }
+
+    function drawLogo2(canvas, data) {
+        const ctx = canvas.getContext("2d");
+        const width = canvas.width;
+        const height = canvas.height;
+        const icon = iconCharacters[data.industry];
+
+        clearCanvas(ctx, width, height, data.primary);
+
+        ctx.strokeStyle = data.secondary;
+        ctx.lineWidth = 10;
+        ctx.strokeRect(80, 70, width - 160, height - 140);
+
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.fillStyle = data.secondary;
+        ctx.font = "bold 100px Arial";
+        ctx.fillText(icon, width / 2, 180);
+
+        const size = fitText(
+            ctx,
+            data.businessName.toUpperCase(),
+            width - 210,
+            85
+        );
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `900 ${size}px Arial`;
+        ctx.fillText(data.businessName.toUpperCase(), width / 2, 325);
+
+        if (data.slogan) {
+            ctx.fillStyle = data.secondary;
+            ctx.font = "30px Arial";
+            ctx.fillText(data.slogan.toUpperCase(), width / 2, 425);
+        }
+    }
+
+    function drawLogo3(canvas, data) {
+        const ctx = canvas.getContext("2d");
+        const width = canvas.width;
+        const height = canvas.height;
+        const icon = iconCharacters[data.industry];
+
+        clearCanvas(ctx, width, height, "#f8f8f8");
+
+        ctx.fillStyle = data.primary;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(350, 0);
+        ctx.lineTo(245, height);
+        ctx.lineTo(0, height);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = data.secondary;
+        ctx.beginPath();
+        ctx.moveTo(300, 0);
+        ctx.lineTo(390, 0);
+        ctx.lineTo(285, height);
+        ctx.lineTo(195, height);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 130px Arial";
+        ctx.fillText(icon, 150, height / 2);
+
+        ctx.textAlign = "left";
+
+        const size = fitText(
+            ctx,
+            data.businessName,
+            520,
+            data.style === "minimal" ? 65 : 74
+        );
+
+        ctx.fillStyle = "#16202a";
+        ctx.font = `800 ${size}px Arial`;
+        ctx.fillText(data.businessName, 410, 290);
+
+        if (data.slogan) {
+            ctx.fillStyle = data.primary;
+            ctx.font = "30px Arial";
+            ctx.fillText(data.slogan, 412, 365);
+        }
+    }
+
+    function drawLogo4(canvas, data) {
+        const ctx = canvas.getContext("2d");
+        const width = canvas.width;
+        const height = canvas.height;
+        const icon = iconCharacters[data.industry];
+
+        clearCanvas(ctx, width, height, "#ffffff");
+
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.strokeStyle = data.primary;
+        ctx.lineWidth = 9;
+        ctx.beginPath();
+        ctx.arc(width / 2, 205, 105, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.fillStyle = data.secondary;
+        ctx.font = "bold 105px Arial";
+        ctx.fillText(icon, width / 2, 205);
+
+        const size = fitText(
+            ctx,
+            data.businessName.toUpperCase(),
+            width - 150,
+            72
+        );
+
+        ctx.fillStyle = "#121820";
+        ctx.font = `900 ${size}px Arial`;
+        ctx.fillText(data.businessName.toUpperCase(), width / 2, 390);
+
+        if (data.slogan) {
+            ctx.fillStyle = data.primary;
+            ctx.font = "28px Arial";
+            ctx.fillText(data.slogan, width / 2, 470);
+        }
+    }
+
+    function generateAllLogos() {
+        const data = getFormData();
+
+        drawLogo1(document.getElementById("logo1"), data);
+        drawLogo2(document.getElementById("logo2"), data);
+        drawLogo3(document.getElementById("logo3"), data);
+        drawLogo4(document.getElementById("logo4"), data);
+
+        showToast("Four new logo ideas have been created.");
+    }
+
+    function createWatermarkedCopy(originalCanvas) {
+        const copy = document.createElement("canvas");
+        copy.width = originalCanvas.width;
+        copy.height = originalCanvas.height;
+
+        const ctx = copy.getContext("2d");
+        ctx.drawImage(originalCanvas, 0, 0);
+
+        ctx.save();
+        ctx.translate(copy.width / 2, copy.height / 2);
+        ctx.rotate(-0.35);
+
+        ctx.font = "bold 62px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        ctx.fillStyle = "rgba(0,0,0,0.18)";
+
+        for (let y = -500; y <= 500; y += 150) {
+            for (let x = -900; x <= 900; x += 550) {
+                ctx.fillText("ANTHONY PUGH MEDIA", x, y);
+            }
+        }
+
+        ctx.restore();
+
+        return copy;
+    }
+
+    function safeFileName(name) {
+        return name
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "") || "business-logo";
+    }
+
+    function downloadCanvas(canvas, fileName) {
+        const link = document.createElement("a");
+        link.download = fileName;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    }
+
+    function downloadWatermarked(number) {
+        const original = document.getElementById(`logo${number}`);
+        const watermarked = createWatermarkedCopy(original);
+        const businessName = getFormData().businessName;
+
+        downloadCanvas(
+            watermarked,
+            `${safeFileName(businessName)}-watermarked-preview.png`
+        );
+
+        showToast("Your free watermarked preview has downloaded.");
+    }
+
+    function purchaseLogo(number) {
+        /*
+        PAYMENT SETUP:
+
+        Replace the address below with your Stripe Payment Link,
+        PayPal payment page or another checkout link.
+
+        You can also send the chosen logo number and business name
+        through URL parameters if required.
+        */
+
+        const paymentLink = "";
+
+        if (paymentLink) {
+            window.location.href = paymentLink;
+            return;
+        }
+
+        showToast(
+            `Logo ${number} selected. Add your £1.99 Stripe or PayPal payment link inside the HTML to activate clean downloads.`
+        );
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        clearTimeout(window.toastTimer);
+
+        window.toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4200);
+    }
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+    generateAllLogos();
+</script>
+
+</body>
+</html>
